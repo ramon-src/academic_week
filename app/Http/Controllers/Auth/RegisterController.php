@@ -2,7 +2,7 @@
 
 namespace AcademicDirectory\Http\Controllers\Auth;
 
-use AcademicDirectory\User;
+use AcademicDirectory\App\Domains\Users\User;
 use Validator;
 use AcademicDirectory\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;

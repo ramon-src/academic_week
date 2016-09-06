@@ -10,10 +10,14 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::group(['namespace' => 'Web'], function() {
+Route::group(['namespace' => 'Web'], function () {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
-    Route::get('/', function (){
-       return view('welcome');
+    Route::get('/', function () {
+        return view('welcome');
     });
-    Route::get('/inscricao', 'RegistrationController@index')->name('web.home');
+
+    Route::group(['prefix' => 'inscricao'], function () {
+        Route::get('/', 'RegistrationController@index')->name('web.inscricao');
+        Route::post('/', 'RegistrationController@create')->name('web.inscricao.salvar');
+    });
 });

@@ -4,9 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ed9df8b872992035f068a7fe461a635a",
-    "content-hash": "76036da3b5b55b91dbe1e1affa01bf9e",
+    "hash": "b9c66a6a77b241f088dd987c1c7b9e2f",
+    "content-hash": "8857e66e1522abc696424586d39c91d8",
     "packages": [
+        {
+            "name": "artesaos/warehouse",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artesaos/warehouse.git",
+                "reference": "7f1b7db62038654ad41923d9439117a539ca8aef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artesaos/warehouse/zipball/7f1b7db62038654ad41923d9439117a539ca8aef",
+                "reference": "7f1b7db62038654ad41923d9439117a539ca8aef",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~5",
+                "illuminate/database": "~5",
+                "illuminate/pagination": "~5",
+                "illuminate/support": "~5",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/container": "~5",
+                "illuminate/http": "~5",
+                "league/fractal": "~0.13"
+            },
+            "suggest": {
+                "league/fractal": "Form json response use fractal (0.13+)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Artesaos\\Warehouse\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vinicius Reis",
+                    "email": "luiz.vinicius73@gmail.com"
+                }
+            ],
+            "description": "Artesãos Warehouse V2 - A simple and direct approach to repositories!",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "laravel5",
+                "model",
+                "repository",
+                "warehouse"
+            ],
+            "time": "2016-08-12 14:09:42"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.0.0",

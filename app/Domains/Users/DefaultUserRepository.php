@@ -8,26 +8,15 @@
 
 namespace AcademicDirectory\App\Domains\Users;
 
-use AcademicDirectory\App\Domains\CrudRepository;
+use Artesaos\Warehouse\BaseRepository;
 
-class DefaultUserRepository implements CrudRepository
+class DefaultUserRepository extends BaseRepository
 {
+
+    protected $modelClass = User::class;
 
     public function create($data)
     {
-        $user = User::create($data);
-        $data['user_id'] = $user->id;
-        Participant::create($data);
-    }
-
-    public function edit()
-    {
-
-    }
-    
-    public function delete()
-    {
-
     }
 
 }

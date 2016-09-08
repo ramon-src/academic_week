@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration
+class CreateInstituitionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('instituitions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('description');
-            $table->boolean('active');
-            $table->bigInteger('instituition_id')->unsigned();
-            $table->timestamps();
-            $table->index('name');
-
-            $table->foreign('instituition_id')->references('id')->on('instituitions');
+            $table->string('initials');
+            $table->softDeletes();
         });
     }
 
@@ -33,6 +28,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('events');
+        Schema::drop('instituitions');
     }
 }

@@ -11,13 +11,30 @@
 |
 */
 
-$factory->define(AcademicDirectory\User::class, function (Faker\Generator $faker) {
+$factory->defineAs(AcademicDirectory\Domains\Users\User::class, 'Root', function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
         'email' => $faker->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'password' => $password ?: $password = bcrypt('12345'),
+        'role_id' => 1,
+    ];
+});
+$factory->defineAs(AcademicDirectory\Domains\Users\User::class, 'Admin', function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'email' => $faker->safeEmail,
+        'password' => $password ?: $password = bcrypt('12345'),
+        'role_id' => 2,
+    ];
+});
+$factory->defineAs(AcademicDirectory\Domains\Users\User::class, 'DefaultUser', function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'email' => $faker->safeEmail,
+        'password' => $password ?: $password = bcrypt('12345'),
+        'role_id' => 2,
     ];
 });

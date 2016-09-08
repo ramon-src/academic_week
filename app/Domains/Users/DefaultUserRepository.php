@@ -6,7 +6,7 @@
  * Time: 01:25
  */
 
-namespace AcademicDirectory\App\Domains\Users;
+namespace AcademicDirectory\Domains\Users;
 
 use Artesaos\Warehouse\AbstractCrudRepository;
 
@@ -15,11 +15,11 @@ class DefaultUserRepository extends AbstractCrudRepository
 
     protected $modelClass = User::class;
 
-    public function create($data)
+
+    public function create(array $data = [])
     {
-        $user = parent::create($data);
-        $data['user_id'] = $user->id;
-        parent::update(Participant::class, $data);
+        $data['role_id'] = Role::getDefaultId();
+        return parent::create($data);
     }
 
 }

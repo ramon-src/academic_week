@@ -3,25 +3,31 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use AcademicDirectory\Domains\Users\DefaultUserRepository;
 
 class RegistrationTest extends TestCase
 {
     /**
-     * A basic functional test example.
+     * A basic test example.
      *
      * @return void
      */
-    public function testVisitRegistrationForm()
+    public function testRegisterDefaultUser()
     {
-        $this->visitRoute('web.inscricao')
-            ->see('RG')
-            ->see('Nome')
-            ->see('Email')
-            ->see('Senha')
-            ->see('Confirme sua Senha');
-    }
-
-    public function testSuccessDefaultUserRegistration(){
-
+        $defaultUserRepository = \Mockery::mock('AcademicDirectory\Domains\Users\DefaultUserRepository');
+        $defaultUserRepository->create(
+            [
+                'email'=>'rodrigo@gmail.com',
+                'password'=>'12345',
+                'rg'=>'87987546',
+                'name'=>'Rodrigo',
+            ]
+        );
+        $this->seeInDatabase('users', [
+            'email' => 'rodrigo@gmail.com',
+        ]);
+        $this->seeInDatabase('people', [
+            'name' => 'Rodrigo',
+        ]);
     }
 }

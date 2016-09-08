@@ -17,6 +17,7 @@ class CreateEventSubscribersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('event_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
+            $table->boolean('active')->default(false);
             $table->timestamps();
             $table->foreign('event_id')->references('id')->on('events');
             $table->foreign('user_id')->references('id')->on('users');

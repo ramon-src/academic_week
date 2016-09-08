@@ -8,15 +8,19 @@
 
 namespace AcademicDirectory\Http\Controllers\Web;
 
+use Illuminate\Http\Request;
+
 class RegistrationController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         return view('web/registration/index');
     }
-    
-    public function create(){
+
+    public function create(Request $request)
+    {
         
     }
-    
+
 }

@@ -22,7 +22,10 @@
 <!-- NAVBAR
 ================================================== -->
 <body>
-@yield('content')
+
+<div class="container">
+    @yield('content')
+</div>
 
 <script src="{{elixir('js/app.js')}}"/>
 </body>

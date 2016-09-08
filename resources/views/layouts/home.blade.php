@@ -123,6 +123,7 @@
     @include('layouts.footer.default')
 
 </div><!-- /.container -->
-<script src="{{elixir('js/app.js')}}"/>
+<script src="{{elixir('js/app.js')}}"></script>
+@yield('script')
 </body>
 </html>

@@ -17,10 +17,27 @@
                 <input type="hidden" name="event_id" value="">
                 <div class="form-group">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <label class="control-label pull-right">Sou aluno da PUCRS</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
+                        <input type="checkbox" id="puc_checkbox" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group" id="registry_number_div">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <label for="registry_number" class="control-label pull-right">N° da Matrícula</label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
+                        <input type="text" name="registry_number" id="registry_number" class="form-control" placeholder="Insira o número da matrícula"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                         <label for="name" class="control-label pull-right">Nome</label>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
-                        <input type="text" name="name" class="form-control" value="" placeholder="Insira seu nome" required="required"/>
+                        <input type="text" name="name" class="form-control" value="" placeholder="Insira seu nome"
+                               required="required"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -28,7 +45,8 @@
                         <label for="rg" class="control-label pull-right">RG</label>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
-                        <input type="text" name="rg" class="form-control" value="" placeholder="Insira seu rg" required="required"/>
+                        <input type="text" name="rg" class="form-control" value="" placeholder="Insira seu rg"
+                               required="required"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -36,7 +54,8 @@
                         <label for="email" class="control-label pull-right">Email</label>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
-                        <input type="email" name="email" class="form-control" value="" placeholder="Insira seu email" required="required"/>
+                        <input type="email" name="email" class="form-control" value="" placeholder="Insira seu email"
+                               required="required"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -54,7 +73,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
                         <input type="password" name="confirm_password" class="form-control" value=""
-                               placeholder="Repita a senha" required="required" />
+                               placeholder="Repita a senha" required="required"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -67,4 +86,19 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $('#puc_checkbox').click(function () {
+            var registry_input = $('#registry_number');
+            if($(this).is(':checked')) {
+                registry_input.attr('required', 'required');
+                $('#registry_number_div').show(500);
+            }else{
+                registry_input.removeAttr('required');
+                $('#registry_number_div').hide(500);
+            }
+        });
+    </script>
 @endsection

@@ -11,7 +11,6 @@
 |
 */
 Route::group(['namespace' => 'Web'], function () {
-    // Controllers Within The "App\Http\Controllers\Admin" Namespace
     Route::get('/', function () {
         return view('welcome');
     });

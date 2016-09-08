@@ -19,6 +19,7 @@ class DefaultUserRepository extends AbstractCrudRepository
     public function create(array $data = [])
     {
         $data['role_id'] = Role::getDefaultId();
+        $data['password'] = bcrypt($data['password']);
         return parent::create($data);
     }
 

@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => AcademicDirectory\User::class,
+            'model' => AcademicDirectory\Domains\Users\User::class,
         ],
 
         // 'users' => [

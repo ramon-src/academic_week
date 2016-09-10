@@ -1,6 +1,6 @@
 <?php
 
-namespace AcademicDirectory\App\Domains\Users;
+namespace AcademicDirectory\Domains\Users;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password', 'active', 'role_id',
     ];
 
     /**
@@ -27,8 +27,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function participant()
+    public function scopeActive($query)
     {
-        return $this->hasOne('AcademicDirectory\Domains\Users\Participant');
+        return $query->where('active', '=', true);
+    }
+
+    public function role()
+    {
+        return $this->hasOne('AcademicDirectory\Domains\Users\Role');
     }
 }

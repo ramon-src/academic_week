@@ -8053,4 +8053,7 @@ body {
   .featurette-heading {
     margin-top: 120px; } }
 
+#registry_number_div {
+  display: none; }
+
 /*# sourceMappingURL=app.css.map */

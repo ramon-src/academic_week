@@ -17,7 +17,7 @@
                     </h1>
                 </div>
                 <div class="row">
-                    @foreach($event->schedule as $programation)
+                    @foreach($event->schedule->sortBy('date') as $programation)
                         <div class="col-lg-2">
                             <div class="panel panel-primary">
                                 <div class="panel-heading text-center">

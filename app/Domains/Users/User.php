@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $query->where('active', '=', true);
     }
 
+    public function person()
+    {
+        return $this->hasOne('AcademicDirectory\Domains\People\People');
+    }
+
     public function role()
     {
         return $this->hasOne('AcademicDirectory\Domains\Users\Role');

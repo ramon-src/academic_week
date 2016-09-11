@@ -23,12 +23,19 @@ class People extends Model
         return $this->hasOne('AcademicDirectory\Domains\Users\User');
     }
 
-    public function instituition(){
-        return $this->hasOne('AcademicDirectory\Domains\Users\Instituition');
+    public function scopeInstituition()
+    {
+        return $this->instituitions()->first();
+    }
+
+    public function instituitionIdIfHasLink()
+    {
+        $instituition_people = $this->instituitions()->first();
+        return ($instituition_people) ? $instituition_people->instituition_id : $instituition_people;
     }
 
     public function instituitions()
     {
-        return $this->hasMany('AcademicDirectory\Domains\People\InstituitionPeople', 'person_id', 'id');
+        return $this->hasMany('AcademicDirectory\Domains\Users\InstituitionPeople', 'person_id', 'id');
     }
 }

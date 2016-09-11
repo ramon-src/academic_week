@@ -8056,4 +8056,22 @@ body {
 #registry_number_div {
   display: none; }
 
+a.btn i {
+  margin-right: 10px; }
+
+#widget-event-title {
+  font-size: 26px; }
+
+#widget-events-content .event-div {
+  border: 1px solid #D3E0E9;
+  border-radius: 3px;
+  padding: 10px; }
+  #widget-events-content .event-div .event-title-div {
+    height: 70px; }
+    #widget-events-content .event-div .event-title-div .event-title {
+      font-size: 15px;
+      font-weight: bold; }
+  #widget-events-content .event-div .btn-schedule {
+    margin-top: 10px; }
+
 /*# sourceMappingURL=app.css.map */

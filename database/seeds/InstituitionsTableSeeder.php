@@ -15,6 +15,9 @@ class InstituitionsTableSeeder extends Seeder
             [
                 'name' => 'Pontifícia Universidade Católica do Rio Grande do Sul',
                 'initials' => 'PUCRS'
+            ],[
+                'name' => 'Pontifícia Universidade Católica de São Paulo',
+                'initials' => 'PUCSP'
             ]
         ]);
     }

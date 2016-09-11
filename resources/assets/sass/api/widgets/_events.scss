@@ -1,0 +1,23 @@
+#widget-event-title {
+  font-size: 26px;
+}
+#widget-events-content {
+  .event-div {
+    border: 1px solid $white-gray;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 10px;
+
+    .event-title-div {
+      height: 70px;
+      .event-title {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+    .btn-schedule {
+      margin-top: 10px;
+    }
+  }
+}

@@ -177,6 +177,7 @@ return [
         // AcademicDirectory\Providers\BroadcastServiceProvider::class,
         AcademicDirectory\Providers\EventServiceProvider::class,
         AcademicDirectory\Providers\RouteServiceProvider::class,
+        AcademicDirectory\Providers\InstituitionEventServiceProvider::class,
 
     ],
 
@@ -224,7 +225,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
     ],
 
 ];

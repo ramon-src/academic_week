@@ -10,12 +10,13 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::group(['namespace' => 'Web', 'middleware' => ['guest']], function () {
+Route::group(['namespace' => 'Web'], function () {
     Route::get('/', 'SiteController@index')->name('web.home');
 });
 
 Route::group(['namespace' => 'Api'], function () {
     Route::get('dashboard', 'DashboardController@index');
+    Route::get('evento/{name}/{id}/programacao', 'EventScheduleController@index')->name('event.schedule');
 });
 
 // Authentication Routes...

@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ramon
- * Date: 10/09/16
- * Time: 19:24
- */
-
 namespace AcademicDirectory\Domains\Events;
 
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 class EventSchedule extends Model
 {
     use Notifiable;
-
+    protected $table = 'event_schedule';
     /**
      * The attributes that are mass assignable.
      *

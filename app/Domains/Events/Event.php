@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ramon
- * Date: 10/09/16
- * Time: 19:24
- */
-
 namespace AcademicDirectory\Domains\Events;
-
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+
 class Event extends Model
 {
     use Notifiable;
@@ -24,7 +17,22 @@ class Event extends Model
         'name', 'description', 'active', 'instituition_id'
     ];
 
-    public function instituition(){
+    public function minDateFormatted()
+    {
+        return getDayAndMonth($this->schedule()->min('date'));
+    }
+    public function maxDateFormatted()
+    {
+        return getDayAndMonth($this->schedule()->max('date'));
+    }
+
+    public function instituition()
+    {
         return $this->hasOne('AcademicDirectory\Domains\Users\Instituition');
+    }
+
+    public function schedule()
+    {
+        return $this->hasMany('AcademicDirectory\Domains\Events\EventSchedule');
     }
 }

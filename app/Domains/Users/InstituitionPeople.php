@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 class InstituitionPeople extends Model
 {
     use Notifiable;
-protected $table='instituition_people';
+    protected $table = 'instituition_people';
     /**
      * The attributes that are mass assignable.
      *

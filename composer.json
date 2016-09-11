@@ -1,7 +1,7 @@
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": ["events", "system", "open","laravel"],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -22,7 +22,10 @@
         ],
         "psr-4": {
             "AcademicDirectory\\": "app/"
-        }
+        },
+        "files":[
+            "app/Domains/Support/helpers.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [

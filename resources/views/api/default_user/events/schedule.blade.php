@@ -26,6 +26,9 @@
                                 <div class="panel-body">
                                     {{$programation->description}}
                                 </div>
+                                <div class="panel-footer">
+                                    <a class="btn btn-xs btn-success">Visualizar / Inscrever</a>
+                                </div>
                             </div>
                         </div>
                     @endforeach

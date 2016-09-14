@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLectureSubscribersTable extends Migration
+class CreateLecturesCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateLectureSubscribersTable extends Migration
      */
     public function up()
     {
-        Schema::create('lecture_subscribers', function (Blueprint $table) {
+        Schema::create('lectures_category', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('lecture_day_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
-            $table->foreign('lecture_day_id')->references('id')->on('lecture_day');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->index('name');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateLectureSubscribersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('lecture_subscribers');
+        Schema::drop('lectures_category');
     }
 }

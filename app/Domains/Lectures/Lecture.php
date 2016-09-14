@@ -21,6 +21,10 @@ class Lecture extends Model
         return $this->hasOne('AcademicDirectory\Domains\Events\LectureDay', 'category_id', 'id');
     }
 
+    public function users(){
+        return $this->hasMany('AcademicDirectory\Domains\Users\UsersLecture');
+    }
+    
     public function event_schedule(){
         return $this->belongsTo('AcademicDirectory\Domains\Events\EventSchedule');
     }

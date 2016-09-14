@@ -55,7 +55,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->person->name }} <span class="caret"></span>
+                            {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
@@ -80,7 +80,7 @@
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-md-11 col-md-offset-1">
+        <div class="col-md-12">
             @yield('content')
         </div>
     </div>

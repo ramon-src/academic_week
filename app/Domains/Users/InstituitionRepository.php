@@ -15,11 +15,9 @@ class InstituitionRepository extends AbstractCrudRepository
 
     protected $modelClass = Instituition::class;
 
-    public function addPerson($personWithRegistryNumber)
+    public function getPUCRSId()
     {
-        $data = $personWithRegistryNumber;
-        $data['instituition_id'] = Instituition::getPucrsId();
-        InstituitionPeople::create($data);
+        return $this->newQuery()->where('initials', '=', 'PUCRS')->first()->id;
     }
 
 }

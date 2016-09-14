@@ -46,7 +46,20 @@ body {
     height: 500px;
     background-color: #777;
   }
-
+  .carousel-control {
+    span {
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      display: inline-block;
+      i{
+        width: 30px;
+        height: 30px;
+        margin-top: -10px;
+        font-size: 30px;
+      }
+    }
+  }
 }
 
 /* Since positioning the image, we need to help out the caption */

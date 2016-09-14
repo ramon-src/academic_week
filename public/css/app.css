@@ -7989,6 +7989,16 @@ body {
   .carousel .item {
     height: 500px;
     background-color: #777; }
+  .carousel .carousel-control span {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block; }
+    .carousel .carousel-control span i {
+      width: 30px;
+      height: 30px;
+      margin-top: -10px;
+      font-size: 30px; }
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -8053,7 +8063,7 @@ body {
   .featurette-heading {
     margin-top: 120px; } }
 
-#registry_number_div {
+#instituition_register_div {
   display: none; }
 
 a.btn i {

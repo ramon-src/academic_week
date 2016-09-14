@@ -17,18 +17,18 @@
                                            name="puc_checkbox" {{(old('puc_checkbox'))?'checked="checked"':''}}>
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('registry_number') ? ' has-error' : '' }}"
-                                 id="registry_number_div">
+                            <div class="form-group{{ $errors->has('instituition_register') ? ' has-error' : '' }}"
+                                 id="instituition_register_div">
 
-                                <label for="registry_number" class="col-md-4 control-label">N° da Matrícula</label>
+                                <label for="instituition_register" class="col-md-4 control-label">N° da Matrícula</label>
 
                                 <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
-                                    <input type="text" name="registry_number" id="registry_number"
-                                           value="{{ old('registry_number') }}" class="form-control"
+                                    <input type="text" name="instituition_register" id="instituition_register"
+                                           value="{{ old('instituition_register') }}" class="form-control"
                                            placeholder="Insira o número da matrícula"/>
-                                    @if ($errors->has('registry_number'))
+                                    @if ($errors->has('instituition_register'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('registry_number') }}</strong>
+                                        <strong>{{ $errors->first('instituition_register') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -120,19 +120,19 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript">
+    <script>
         if ($('#puc_checkbox').is(':checked')) {
-            $('#registry_number').attr('required', 'required');
-            $('#registry_number_div').show(500);
+            $('#instituition_register').attr('required', 'required');
+            $('#instituition_register_div').show(500);
         }
         $('#puc_checkbox').click(function () {
-            var registry_input = $('#registry_number');
+            var registry_input = $('#instituition_register');
             if ($(this).is(':checked')) {
                 registry_input.attr('required', 'required');
-                $('#registry_number_div').show(500);
+                $('#instituition_register_div').show(500);
             } else {
                 registry_input.removeAttr('required');
-                $('#registry_number_div').hide(500);
+                $('#instituition_register_div').hide(500);
             }
         });
     </script>

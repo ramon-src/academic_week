@@ -17,9 +17,13 @@ class CreateLecturesTable extends Migration
             $table->bigIncrements('id');
             $table->string('subject');
             $table->string('description');
-            $table->bigInteger('lecture_type_id')->unsigned();
+            $table->string('local');
+            $table->time('init_hour');
+            $table->time('end_hour');
+            $table->smallInteger('max_people');
+            $table->bigInteger('lecture_category_id')->unsigned();
             $table->timestamps();
-            $table->foreign('lecture_type_id')->references('id')->on('lecture_types');
+            $table->foreign('lecture_category_id')->references('id')->on('lectures_category');
         });
     }
 

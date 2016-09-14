@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePeopleTable extends Migration
+class CreateLectureUserRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePeopleTable extends Migration
      */
     public function up()
     {
-        Schema::create('people', function (Blueprint $table) {
+        Schema::create('lecture_user_roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('rg')->nullable();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('role_id');
+            $table->bigInteger('lecture_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('lecture_id')->references('id')->on('users_lecture');
+            $table->foreign('role_id')->references('id')->on('lecture_roles');
         });
     }
 
@@ -30,6 +30,6 @@ class CreatePeopleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('people');
+        Schema::dropIfExists('lecture_user_roles');
     }
 }

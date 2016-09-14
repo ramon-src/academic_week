@@ -23,8 +23,13 @@ class Instituition extends Model
         return $query->where('initials', '=', 'PUCRS')->first()->id;
     }
 
-    public function people()
+    public function users()
     {
-        return $this->hasMany('AcademicDirectory\Domains\People\InstituitionPeople', 'instituition_id', 'id');
+        return $this->belongsTo('AcademicDirectory\Domains\Users\User');
+    }
+
+    public function events()
+    {
+        return $this->belongsTo('AcademicDirectory\Domains\Events\Event');
     }
 }

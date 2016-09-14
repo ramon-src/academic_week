@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->boolean('active');
-            $table->bigInteger('instituition_id')->unsigned();
+            $table->integer('instituition_id')->unsigned();
             $table->timestamps();
             $table->index('name');
 

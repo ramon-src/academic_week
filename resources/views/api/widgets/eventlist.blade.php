@@ -6,7 +6,7 @@
     <div id="widget-events-content">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                @forelse($events->getEventList(auth()->user()->person->instituitionIdIfHasLink()) as $event)
+                @forelse($events->getEventList(auth()->user()->instituition_id) as $event)
                     <div class="col-lg-4 text-center">
                         <div class="event-div">
                             <div class="event-title-div">

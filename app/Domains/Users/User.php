@@ -15,7 +15,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'active', 'role_id',
+        'name', 'email', 'password', 'active',
+        'rg', 'instituition_register', 'role_id', 'instituition_id'
     ];
 
     /**
@@ -32,13 +33,13 @@ class User extends Authenticatable
         return $query->where('active', '=', true);
     }
 
-    public function person()
-    {
-        return $this->hasOne('AcademicDirectory\Domains\People\People');
-    }
-
     public function role()
     {
         return $this->hasOne('AcademicDirectory\Domains\Users\Role');
+    }
+
+    public function instituition()
+    {
+        return $this->hasOne('AcademicDirectory\Domains\Users\Instituition');
     }
 }

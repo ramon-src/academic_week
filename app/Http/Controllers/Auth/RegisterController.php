@@ -33,7 +33,6 @@ class RegisterController extends Controller
     protected $redirectTo = '/dashboard';
 
     protected $defaultUserRepository;
-    protected $peopleRepository;
     protected $instituitionRepository;
 
     /**
@@ -41,11 +40,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(DefaultUserRepository $defaultUserRepository, PeopleRepository $peopleRepository, InstituitionRepository $instituitionRepository)
+    public function __construct(DefaultUserRepository $defaultUserRepository, InstituitionRepository $instituitionRepository)
     {
         $this->middleware('guest');
         $this->defaultUserRepository = $defaultUserRepository;
-        $this->peopleRepository = $peopleRepository;
         $this->instituitionRepository = $instituitionRepository;
     }
 
@@ -75,14 +73,10 @@ class RegisterController extends Controller
     {
         try {
             DB::beginTransaction();
-            $User = $this->defaultUserRepository->create($data);
-            $data['user_id'] = $User['id'];
-            $Person = $this->peopleRepository->create($data);
-
-            if ($data['registry_number']) {
-                $data['person_id'] = $Person['id'];
-                $this->instituitionRepository->addPerson($data);
+            if (array_key_exists('puc_checkbox', $data)){
+                $data['instituition_id'] = $this->instituitionRepository->getPUCRSId();
             }
+            $User = $this->defaultUserRepository->create($data);
             DB::commit();
             return $User;
         } catch (Exception $e) {

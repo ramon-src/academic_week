@@ -14,7 +14,7 @@ class CreateInstituitionsTable extends Migration
     public function up()
     {
         Schema::create('instituitions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('name');
             $table->string('initials');
             $table->softDeletes();

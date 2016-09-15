@@ -20,4 +20,5 @@ class LectureRoles extends Model
 
     public $timestamps = false;
 
+    
 }

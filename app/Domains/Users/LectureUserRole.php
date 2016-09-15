@@ -15,7 +15,7 @@ class LectureUserRole extends Model
      * @var array
      */
     protected $fillable = [
-        'role_id', 'lecture_id'
+        'role_id', 'user_lecture_id'
     ];
 
     public function user()

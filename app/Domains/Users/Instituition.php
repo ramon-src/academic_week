@@ -18,6 +18,8 @@ class Instituition extends Model
         'name', 'initials'
     ];
 
+    public $timestamps = false;
+    
     public function scopeGetPucrsId($query)
     {
         return $query->where('initials', '=', 'PUCRS')->first()->id;

@@ -27,7 +27,10 @@
                                     {{$programation->description}}
                                 </div>
                                 <div class="panel-footer">
-                                    <a class="btn btn-xs btn-success">Visualizar / Inscrever</a>
+                                    <a href="{{route('event.schedule.day', [str_slug($event->name), $programation->id, formatDateWithSlash($programation->date)])}}"
+                                       class="btn btn-xs btn-success">
+                                        Visualizar / Inscrever
+                                    </a>
                                 </div>
                             </div>
                         </div>

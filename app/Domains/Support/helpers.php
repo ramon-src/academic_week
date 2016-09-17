@@ -9,6 +9,13 @@ if (!function_exists('formatDate')) {
     }
 }
 
+if (!function_exists('formatDateWithSlash')) {
+    function formatDateWithSlash($date)
+    {
+        $dateparsed = Carbon::parse($date);
+        return $dateparsed->format('d-m-Y');
+    }
+}
 
 if (!function_exists('getWeekDay')) {
     function getWeekDay($date)

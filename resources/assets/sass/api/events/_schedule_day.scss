@@ -1,0 +1,19 @@
+
+#schedule-day-container {
+  .panel-title {
+    position: relative;
+    .subject {
+      margin-left: 15px;
+    }
+    .local {
+      float: right;
+      i{
+        margin-right: 5px;
+      }
+    }
+    .btn-participate {
+      float: right;
+      margin: 2px -5px 0px 0px;
+    }
+  }
+}

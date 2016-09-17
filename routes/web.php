@@ -17,6 +17,7 @@ Route::group(['namespace' => 'Web'], function () {
 Route::group(['namespace' => 'Api'], function () {
     Route::get('dashboard', 'DashboardController@index');
     Route::get('evento/{name}/{id}/programacao', 'EventScheduleController@index')->name('event.schedule');
+    Route::get('evento/{name}/np/{event_schedule_id}/dia/{date}', 'EventScheduleController@schedule_day')->name('event.schedule.day');
 });
 
 // Authentication Routes...

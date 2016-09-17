@@ -8084,4 +8084,16 @@ a.btn i {
   #widget-events-content .event-div .btn-schedule {
     margin-top: 10px; }
 
+#schedule-day-container .panel-title {
+  position: relative; }
+  #schedule-day-container .panel-title .subject {
+    margin-left: 15px; }
+  #schedule-day-container .panel-title .local {
+    float: right; }
+    #schedule-day-container .panel-title .local i {
+      margin-right: 5px; }
+  #schedule-day-container .panel-title .btn-participate {
+    float: right;
+    margin: 2px -5px 0px 0px; }
+
 /*# sourceMappingURL=app.css.map */

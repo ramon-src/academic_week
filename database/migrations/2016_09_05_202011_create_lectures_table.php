@@ -22,8 +22,10 @@ class CreateLecturesTable extends Migration
             $table->time('end_hour');
             $table->smallInteger('max_people');
             $table->bigInteger('lecture_category_id')->unsigned();
+            $table->bigInteger('event_schedule_id')->unsigned();
             $table->timestamps();
             $table->foreign('lecture_category_id')->references('id')->on('lectures_category');
+            $table->foreign('event_schedule_id')->references('id')->on('event_schedule');
         });
     }
 

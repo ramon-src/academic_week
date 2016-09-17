@@ -16,7 +16,6 @@ class CreateLecturesCategoryTable extends Migration
         Schema::create('lectures_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('description');
             $table->timestamps();
             $table->index('name');
         });

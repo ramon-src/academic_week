@@ -9,6 +9,7 @@ class LectureCategory extends Model
 {
     use Notifiable;
 
+    protected $table = 'lectures_category';
     /**
      * The attributes that are mass assignable.
      *

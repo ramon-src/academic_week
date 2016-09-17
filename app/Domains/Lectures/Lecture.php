@@ -14,11 +14,11 @@ class Lecture extends Model
      */
     protected $fillable = [
         'subject', 'description', 'local', 'init_hour', 'end_hour',
-        'max_people', 'event_schedule_id', 'category_id'
+        'max_people', 'event_schedule_id', 'lecture_category_id'
     ];
 
     public function category(){
-        return $this->hasOne('AcademicDirectory\Domains\Events\LectureDay', 'category_id', 'id');
+        return $this->hasOne('AcademicDirectory\Domains\Lectures\LectureCategory', 'lecture_category_id', 'id');
     }
 
     public function users(){

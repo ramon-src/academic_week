@@ -26,3 +26,11 @@ if (!function_exists('getDayAndMonth')) {
         return $dateparsed->format('d/m');
     }
 }
+
+if (!function_exists('setStringToTimeType')) {
+    function setHourAndMinute($hour, $minute)
+    {
+        $time = Carbon::createFromTime($hour, $minute);
+        return $time->toTimeString();
+    }
+}

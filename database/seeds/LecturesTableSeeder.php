@@ -18,9 +18,9 @@ class LecturesTableSeeder extends Seeder
          */
         DB::table('lectures')->insert([
             [
-                'subject' => 'POKÉDEX  SCRUM',
-                'description' => 'O Professor Jorge Kotick Audy irá dar um  curso que  será uma imersão SCRUM para o desenvolvimento das telas de uma super-pokedex por grupo.
-Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica do livro SCRUM 360º.',
+                'subject' => 'POKÉDEX SCRUM',
+                'description' => 'O Professor Jorge Kotick Audy irá dar um curso, para imersão das práticas SCRUM, no desenvolvimento das telas de uma super-pokédex.
+Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo... Uma versão lúdica de seu livro, SCRUM 360º.',
                 'local' => 'Global Tecnopuc - Crialab',
                 'init_hour' => setHourAndMinute(17, 30),
                 'end_hour' => setHourAndMinute(22, 30),
@@ -51,17 +51,17 @@ Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica d
                 'max_people' => 30,
                 'event_schedule_id' => 1, 'lecture_category_id' => 2
             ], [
-                'subject' => 'Núcleo de Pesquisa - 1 ',
+                'subject' => 'Núcleo de Pesquisa - 1',
                 'description' => 'Ainda não fornecido pelo palestrante',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(8, 30),
                 'end_hour' => setHourAndMinute(9, 30),
                 'max_people' => 300,
                 'event_schedule_id' => 1, 'lecture_category_id' => 1
             ], [
-                'subject' => 'Núcleo de Pesquisa - 1 ',
+                'subject' => 'Núcleo de Pesquisa - 1',
                 'description' => 'Ainda não fornecido pelo palestrante',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(8, 30),
                 'end_hour' => setHourAndMinute(9, 30),
                 'max_people' => 300,
@@ -69,7 +69,7 @@ Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica d
             ], [
                 'subject' => 'Núcleo de Pesquisa - 2',
                 'description' => 'Ainda não fornecido pelo palestrante',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(9, 30),
                 'end_hour' => setHourAndMinute(10, 30),
                 'max_people' => 300,
@@ -77,15 +77,15 @@ Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica d
             ], [
                 'subject' => 'Núcleo de Pesquisa - 3',
                 'description' => 'Ainda não fornecido pelo palestrante',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(10, 30),
                 'end_hour' => setHourAndMinute(11, 30),
                 'max_people' => 300,
                 'event_schedule_id' => 1, 'lecture_category_id' => 1
             ], [
-                'subject' => 'Núcleo de Pesquisa - 4 ',
+                'subject' => 'Núcleo de Pesquisa - 4',
                 'description' => 'Ainda não fornecido pelo palestrante',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(11, 30),
                 'end_hour' => setHourAndMinute(12, 30),
                 'max_people' => 300,
@@ -93,23 +93,7 @@ Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica d
             ], [
                 'subject' => 'Núcleo de Pesquisa - 5',
                 'description' => 'Ainda não fornecido pelo palestrante',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
-                'init_hour' => setHourAndMinute(12, 30),
-                'end_hour' => setHourAndMinute(13, 30),
-                'max_people' => 300,
-                'event_schedule_id' => 1, 'lecture_category_id' => 1
-            ], [
-                'subject' => 'Núcleo de Pesquisa - 5',
-                'description' => 'Ainda não fornecido pelo palestrante',
-                'local' => 'Prédio 32 FACIN - Auditório térreo, Sala 102',
-                'init_hour' => setHourAndMinute(12, 30),
-                'end_hour' => setHourAndMinute(13, 30),
-                'max_people' => 300,
-                'event_schedule_id' => 1, 'lecture_category_id' => 1
-            ], [
-                'subject' => 'Núcleo de Pesquisa - 5',
-                'description' => 'Ainda não fornecido pelo palestrante',
-                'local' => 'Prédio 32 FACIN - Auditório térreo, Sala 102',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(12, 30),
                 'end_hour' => setHourAndMinute(13, 30),
                 'max_people' => 300,
@@ -117,7 +101,7 @@ Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica d
             ], [
                 'subject' => 'Palestra E-core',
                 'description' => 'Inserir descrição',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(17, 30),
                 'end_hour' => setHourAndMinute(18, 30),
                 'max_people' => 300,
@@ -125,7 +109,7 @@ Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica d
             ], [
                 'subject' => 'TecnoPUC - Um projeto de Sucesso',
                 'description' => 'Inserir descrição',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(18, 30),
                 'end_hour' => setHourAndMinute(19, 30),
                 'max_people' => 300,
@@ -133,7 +117,7 @@ Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica d
             ], [
                 'subject' => ' Mercado de trabalho e o Desenvolvimento de Software',
                 'description' => 'Ainda não informado pelo palestrante Antonio Reis',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(19, 30),
                 'end_hour' => setHourAndMinute(20, 30),
                 'max_people' => 300,
@@ -141,7 +125,7 @@ Serão 7 grupos, podendo ter de 5 a 6 alunos por grupo ... uma versão lúdica d
             ], [
                 'subject' => ' IOT - Contexto',
                 'description' => 'Ainda não informado pelo palestrante Antonio Reis',
-                'local' => 'Prédio 97 Global Tecnopuc - Auditório Sala 109',
+                'local' => 'Prédio 97 Global Tecnopuc - Auditório, Sala 109',
                 'init_hour' => setHourAndMinute(19, 30),
                 'end_hour' => setHourAndMinute(20, 30),
                 'max_people' => 300,

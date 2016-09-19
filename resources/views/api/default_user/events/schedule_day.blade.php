@@ -29,8 +29,10 @@
                                                 <i class="fa fa-map-marker"></i>{{$lecture->local}}</span>
                                         </div>
                                         <div class="col-lg-2">
-                                            <a class="btn btn-xs btn-success btn-participate"><i
-                                                        class="fa fa-thumbs-o-up"></i>Participar</a>
+                                            <a href="{{route('event.schedule.subscribe', [$event_schedule->id, $lecture->id])}}"
+                                               class="btn btn-xs btn-success btn-participate">
+                                                <i class="fa fa-thumbs-o-up"></i>Participar
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -64,8 +66,10 @@
                                                 <i class="fa fa-map-marker"></i>{{$course->local}}</span>
                                         </div>
                                         <div class="col-lg-2">
-                                            <a class="btn btn-xs btn-success btn-participate"><i
-                                                        class="fa fa-thumbs-o-up"></i>Participar</a>
+                                            <button data-url="{{route('event.schedule.subscribe', [$event_schedule->id, $course->id])}}"
+                                               class="btn btn-xs btn-success btn-participate">
+                                                <i class="fa fa-thumbs-o-up"></i>Participar
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -84,4 +88,22 @@
     </section>
 @endsection
 @section('script')
+    <script>
+        $('.btn-participate').click(function (){
+
+            $.ajax({
+                url: $(this).attr('data-url'),
+                method: 'GET',
+                dataType: 'json',
+                success: function (data){
+                    alert(data);
+                },
+                error: function (){
+
+                }
+            });
+
+        });
+
+    </script>
 @endsection

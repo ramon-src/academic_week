@@ -9,6 +9,7 @@
 namespace AcademicDirectory\Domains\Events;
 
 use Artesaos\Warehouse\AbstractCrudRepository;
+use Illuminate\Support\Facades\DB;
 
 class EventScheduleRepository extends AbstractCrudRepository
 {
@@ -27,9 +28,10 @@ class EventScheduleRepository extends AbstractCrudRepository
             ->join('lectures_category', 'lectures_category.id', '=', 'lectures.lecture_category_id')
             ->where('lectures_category.name', '=', 'Palestras')
             ->where('event_schedule.id', '=', $id)
-            ->select('lectures.*', 'lectures_category.name')
+            ->select('lectures.*', 'lectures_category.name', DB::raw('DATE_FORMAT(lectures.init_hour,"%H:%i") as init_hour'), DB::raw('DATE_FORMAT(lectures.end_hour, "%H:%i") as end_hour'))
             ->get();
     }
+
     public function getAllCourses($id)
     {
         return $this->newQuery()
@@ -37,7 +39,7 @@ class EventScheduleRepository extends AbstractCrudRepository
             ->join('lectures_category', 'lectures_category.id', '=', 'lectures.lecture_category_id')
             ->where('lectures_category.name', '=', 'Cursos')
             ->where('event_schedule.id', '=', $id)
-            ->select('lectures.*', 'lectures_category.name')
+            ->select('lectures.*', 'lectures_category.name', DB::raw('DATE_FORMAT(lectures.init_hour,"%H:%i") as init_hour'), DB::raw('DATE_FORMAT(lectures.end_hour, "%H:%i") as end_hour'))
             ->get();
     }
 

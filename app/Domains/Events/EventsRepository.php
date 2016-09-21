@@ -25,7 +25,18 @@ class EventsRepository extends AbstractCrudRepository
         return $this->newQuery()->where("instituition_id", "=", $id)->where("active", "=", true)->get();
     }
 
-    public function getAllActiveEvents(){
+    public function getAllActiveEvents()
+    {
         return $this->newQuery()->where("active", "=", true)->get();
+    }
+
+    public function isUserSubscriberInEvent($event_id)
+    {
+        return $this->newQuery()
+            ->join('events_subscribers', 'events.id', '=', 'events_subscribers.event_id')
+            ->where('events_subscribers.user_id', '=', auth()->id())
+            ->where('events_subscribers.event_id', '=', $event_id)
+            ->select('events_subscribers.active')
+            ->get();
     }
 }

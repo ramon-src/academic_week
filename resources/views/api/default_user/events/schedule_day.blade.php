@@ -10,7 +10,7 @@
                     </span>
                 </h1>
 
-                @if($events->isUserSubscriberInEvent($event_schedule->event_id))
+                @if($events->isUserSubscriberInEvent($event_schedule->event_id, auth()->id()))
                     <div class="event-notification page-header text-warning">
                         <p>Você ainda não está inscrito no evento.</p>
                         <p>Para que você possa participar das palestras e cursos entregue 1 kg de alimento não perecível

@@ -13,11 +13,5 @@ class UsersLectureTableSeeder extends Seeder
     public function run()
     {
 
-        DB::table('users_lecture')->insert([
-            [
-                'user_id' => 1,
-                'lecture_id' => 5,
-            ]
-        ]);
     }
 }

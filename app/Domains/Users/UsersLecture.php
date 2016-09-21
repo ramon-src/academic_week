@@ -8,12 +8,13 @@ use Illuminate\Notifications\Notifiable;
 class UsersLecture extends Model
 {
     use Notifiable;
-
+    public $table = 'users_lecture';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
     protected $fillable = [
         'user_id', 'lecture_id'
     ];

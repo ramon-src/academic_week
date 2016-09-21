@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 class EventSchedule extends Model
 {
     use Notifiable;
-    protected $table = 'event_schedule';
+    public $table = 'event_schedule';
     /**
      * The attributes that are mass assignable.
      *

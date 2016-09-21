@@ -1,5 +1,10 @@
-a.btn {
+a.btn, span.btn{
   i {
     margin-right: 10px;
   }
+}
+
+.btn-waiting{
+  background-color: $white-gray;
+  color: black;
 }

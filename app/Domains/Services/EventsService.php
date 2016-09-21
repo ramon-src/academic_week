@@ -25,4 +25,8 @@ class EventsService
             return $this->eventsRepository->getAllActiveEvents();
         }
     }
+
+    public function isUserSubscriberInEvent($id){
+        return $this->eventsRepository->isUserSubscriberInEvent($id);
+    }
 }

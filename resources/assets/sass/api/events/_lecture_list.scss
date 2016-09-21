@@ -1,0 +1,18 @@
+.border-pendent {
+  border-color: grey;
+}
+
+.border-conflict {
+  border-color: $brand-danger;
+}
+
+.conflict-arrow {
+  position: absolute;
+  left: 0px;
+  margin-top: 5px;
+  color: $brand-danger;
+}
+
+.btn-participate{
+  display: none;
+}

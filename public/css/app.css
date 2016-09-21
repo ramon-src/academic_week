@@ -8066,8 +8066,12 @@ body {
 #instituition_register_div {
   display: none; }
 
-a.btn i {
+a.btn i, span.btn i {
   margin-right: 10px; }
+
+.btn-waiting {
+  background-color: #D3E0E9;
+  color: black; }
 
 #widget-event-title {
   font-size: 26px; }
@@ -8095,5 +8099,20 @@ a.btn i {
   #schedule-day-container .panel-title .btn-participate {
     float: right;
     margin: 2px -5px 0px 0px; }
+
+.border-pendent {
+  border-color: grey; }
+
+.border-conflict {
+  border-color: #bf5329; }
+
+.conflict-arrow {
+  position: absolute;
+  left: 0px;
+  margin-top: 5px;
+  color: #bf5329; }
+
+.btn-participate {
+  display: none; }
 
 /*# sourceMappingURL=app.css.map */

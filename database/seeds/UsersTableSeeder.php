@@ -17,13 +17,13 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Ramon Schmidt Rocha',
                 'email' => 'ramonroc@gmail.com',
-                'password' => bcrypt('12345'),
+                'password' => bcrypt('*dr4m0n2486*'),
                 'active' => true,
                 'role_id' => DB::table('roles')->where('name', 'Root')->value('id')
             ], [
                 'name' => 'DAI Admin',
                 'email' => 'daipucrs2016@gmail.com',
-                'password' => bcrypt('12345'),
+                'password' => bcrypt('admdai2016'),
                 'active' => true,
                 'role_id' => DB::table('roles')->where('name', 'Administrador')->value('id')
             ]

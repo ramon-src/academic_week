@@ -16,19 +16,9 @@ class EventsTableSeeder extends Seeder
         DB::table('events')->insert([
             [
                 'name' => 'Semana Acadêmica',
-                'description'=>'Inserir descrição',
+                'description'=>'Os temas apresentados durante os três dias da Semana Acadêmica, foram sugestões de alunos e professores sobre os principais assuntos e tendências na área da Informática.',
                 'active' => true,
                 'instituition_id' => 1
-            ], [
-                'name' => 'Hackatruck',
-                'description'=>'Inserir descrição',
-                'active' => false,
-                'instituition_id' => 1
-            ],[
-                'name' => 'Hackatruck PUCSP',
-                'description'=>'Inserir descrição',
-                'active' => true,
-                'instituition_id' => 2
             ]
         ]);
     }

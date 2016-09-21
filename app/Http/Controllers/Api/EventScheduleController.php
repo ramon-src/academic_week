@@ -48,23 +48,44 @@ class EventScheduleController extends Controller
     {
         $Lecture = $lecturesRepository->findByID($lecture_id);
         $EventSchedule = $this->eventScheduleRepository->findByID($event_schedule_id);
-
-        $LecturesSubscribed = $usersLectureRepository->getAllLecturesThatUserIsSubscriber($EventSchedule->event_id, Auth::id(), $EventSchedule->date);
+        $event_id = $EventSchedule->event_id;
+        $user_id = Auth::id();
+        $LecturesSubscribed = $usersLectureRepository->getAllLecturesThatUserIsSubscriber($event_id, $user_id, $EventSchedule->date);
         $conflicts = $this->getArrayOfConfirmsInTheSameHour($LecturesSubscribed, $Lecture);
         if (array_count_values($conflicts)) {
             return response()->json(['status' => 'conflict', 'conflict_ids' => $conflicts]);
         } else {
-            dd();
             DB::beginTransaction();
             try {
-                $usersLectureRepository->create(['user_id' => Auth::id(), 'lecture_id' => $lecture_id]);
-                DB::commit();
-                return response()->json(['status' => true, 'message' => '']);
+                $count = $usersLectureRepository->countUsersSubscribedInLecture($event_id, $lecture_id);
+                if($count < $Lecture->max_people) {
+                    $isSubscriber = $this->eventsRepository->isUserSubscriberInEvent($event_id, $user_id);
+                    $is = (count($isSubscriber)) ? true : 'false';
+                    $usersLectureRepository->create(['user_id' => $user_id, 'lecture_id' => $lecture_id]);
+                    DB::commit();
+                    return response()->json(['status' => true, 'message' => '', 'subs' => $is, 'lecture_id' => $lecture_id]);
+                }else{
+                    DB::commit();
+                    return response()->json(['status' => 'maxpeople', 'message' => 'Esta palestra/curso já atingiu o número máximo', 'lecture_id' => $lecture_id]);
+                }
             } catch (Exception $e) {
                 DB::rollback();
                 return response()->json(['status' => 'false', 'message' => '']);
             }
         }
+    }
+
+    public function unsubscribe($lecture_id, UsersLectureRepository $usersLectureRepository)
+    {
+        DB::beginTransaction();
+        try {
+            $usersLectureRepository->unsubscribe(Auth::id(), $lecture_id);
+            DB::commit();
+            return response()->json(['status' => 'deleted', 'lecture_id' => $lecture_id]);
+        } catch (Exception $e) {
+            DB::rollback();
+        }
+
     }
 
     public function lecturesSubscribed($event_schedule_id, UsersLectureRepository $usersLectureRepository)

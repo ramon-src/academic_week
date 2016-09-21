@@ -19,6 +19,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('evento/{name}/{id}/programacao', 'EventScheduleController@index')->name('event.schedule');
     Route::get('evento/{name}/np/{event_schedule_id}/dia/{date}', 'EventScheduleController@schedule_day')->name('event.schedule.day');
     Route::get('participar/programacao/{event_schedule_id}/palestra/{lecture_id}', 'EventScheduleController@subscribe')->name('event.schedule.subscribe');
+    Route::get('desinscrever/palestra/{lecture_id}', 'EventScheduleController@unsubscribe');
     Route::get('get/palestras/{event_schedule_id}', 'EventScheduleController@lecturesSubscribed');
 });
 

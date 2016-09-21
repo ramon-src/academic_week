@@ -26,7 +26,7 @@ class EventsService
         }
     }
 
-    public function isUserSubscriberInEvent($id){
-        return $this->eventsRepository->isUserSubscriberInEvent($id);
+    public function isUserSubscriberInEvent($id, $user_id){
+        return $this->eventsRepository->isUserSubscriberInEvent($id, $user_id);
     }
 }

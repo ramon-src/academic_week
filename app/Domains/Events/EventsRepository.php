@@ -30,11 +30,11 @@ class EventsRepository extends AbstractCrudRepository
         return $this->newQuery()->where("active", "=", true)->get();
     }
 
-    public function isUserSubscriberInEvent($event_id)
+    public function isUserSubscriberInEvent($event_id, $user_id)
     {
         return $this->newQuery()
             ->join('events_subscribers', 'events.id', '=', 'events_subscribers.event_id')
-            ->where('events_subscribers.user_id', '=', auth()->id())
+            ->where('events_subscribers.user_id', '=', $user_id)
             ->where('events_subscribers.event_id', '=', $event_id)
             ->select('events_subscribers.active')
             ->get();

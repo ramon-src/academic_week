@@ -46,7 +46,7 @@
                                         <div class="col-lg-2 div-buttons" id="lecture-buttons-{{$lecture->id}}">
                                             @if($is_pending)
                                                 <span data-lecture="{{$lecture->id}}"
-                                                      class="btn btn-xs btn-waiting btn-participate">
+                                                      class="btn btn-xs btn-waiting">
                                                     <i class="fa fa-lock"></i>Insc.Pendente
                                             </span>
                                             @else
@@ -96,7 +96,7 @@
                                         <div class="col-lg-2 div-buttons" id="lecture-buttons-{{$course->id}}">
                                             @if($is_pending)
                                                 <span data-lecture="{{$lecture->id}}"
-                                                      class="btn btn-xs btn-waiting btn-participate">
+                                                      class="btn btn-xs btn-waiting">
                                                 <i class="fa fa-lock"></i>Insc.Pendente
                                             </span>
                                             @else
@@ -133,8 +133,9 @@
         var ev_schedule = document.getElementById('schedule-day-container');
         var ev_schedule_id = ev_schedule.getAttribute('event-schedule');
         var user_is_pending = ev_schedule.getAttribute('is-pending');
+        $(".btn-success").show();
         $(window).on('load', function () {
-            if (!user_is_pending) {
+            if (user_is_pending == 'false') {
                 $.ajax({
                     url: '/get/palestras/' + ev_schedule_id,
                     method: 'GET',
@@ -174,6 +175,14 @@
                             });
                         } else if (data.status == 'maxpeople') {
                             alert(data.message);
+                        } else if (data.status == 'deleted') {
+                            var div = $('#lecture-buttons-' + data.lecture_id);
+                            div.children(".btn-success").show();
+                            div.children(".btn-danger").hide();
+                        } else {
+                            var div = $('#lecture-buttons-' + data.lecture_id);
+                            div.children(".btn-success").hide();
+                            div.children(".btn-danger").show();
                         }
                     },
                     error: function () {

@@ -41,7 +41,8 @@ class EventScheduleController extends Controller
         return view('api/default_user/events/schedule_day')
             ->with('event_schedule', $EventScheduleDay)
             ->with('lectures', $this->eventScheduleRepository->getAllLectures($event_schedule_id))
-            ->with('courses', $this->eventScheduleRepository->getAllCourses($event_schedule_id));
+            ->with('courses', $this->eventScheduleRepository->getAllCourses($event_schedule_id))
+            ->with('is_pending', $this->eventsRepository->isUserSubscriberInEvent($EventScheduleDay->event_id, auth()->id()));
     }
 
     public function subscribe($event_schedule_id, $lecture_id, UsersLectureRepository $usersLectureRepository, LecturesRepository $lecturesRepository)
@@ -57,8 +58,8 @@ class EventScheduleController extends Controller
         } else {
             DB::beginTransaction();
             try {
-                $count = $usersLectureRepository->countUsersSubscribedInLecture($event_id, $lecture_id);
-                if($count < $Lecture->max_people) {
+                $count = $usersLectureRepository->countUsersSubscribedInLecture($event_id, $lecture_id)->first();
+                if($count->user_count < $Lecture->max_people) {
                     $isSubscriber = $this->eventsRepository->isUserSubscriberInEvent($event_id, $user_id);
                     $is = (count($isSubscriber)) ? true : 'false';
                     $usersLectureRepository->create(['user_id' => $user_id, 'lecture_id' => $lecture_id]);

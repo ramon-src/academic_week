@@ -1,7 +1,8 @@
 @extends('api.dashboard')
-@inject('events', 'AcademicDirectory\Domains\Services\EventsService')
+
 @section('content')
-    <section id="schedule-day-container" event-schedule="{{$event_schedule->id}}">
+    <section id="schedule-day-container" is-pending="{{$is_pending ? 'true' : 'false'}}"
+             event-schedule="{{$event_schedule->id}}">
         <div class="panel panel-default">
             <div class="panel-body">
                 <h1>{{$event_schedule->event->name}}
@@ -10,7 +11,7 @@
                     </span>
                 </h1>
 
-                @if($events->isUserSubscriberInEvent($event_schedule->event_id, auth()->id()))
+                @if($is_pending)
                     <div class="event-notification page-header text-warning">
                         <p>Você ainda não está inscrito no evento.</p>
                         <p>Para que você possa participar das palestras e cursos entregue 1 kg de alimento não perecível
@@ -43,24 +44,23 @@
                                                 <i class="fa fa-map-marker"></i>{{$lecture->local}}</span>
                                         </div>
                                         <div class="col-lg-2 div-buttons" id="lecture-buttons-{{$lecture->id}}">
-                                            <span data-lecture="{{$lecture->id}}"
-                                                  data-url="/participar/programacao/{{$event_schedule->id}}/palestra/{{$lecture->id}}"
-                                                  class="btn btn-xs btn-success btn-participate">
+                                            @if($is_pending)
+                                                <span data-lecture="{{$lecture->id}}"
+                                                      class="btn btn-xs btn-waiting btn-participate">
+                                                    <i class="fa fa-lock"></i>Insc.Pendente
+                                            </span>
+                                            @else
+                                                <span data-lecture="{{$lecture->id}}"
+                                                      data-url="/participar/programacao/{{$event_schedule->id}}/palestra/{{$lecture->id}}"
+                                                      class="btn btn-xs btn-success btn-participate">
                                                 <i class="fa fa-user-plus"></i>Participar
                                             </span>
-                                            <span data-lecture="{{$lecture->id}}"
-                                                  class="btn btn-xs btn-info btn-participate">
-                                                <i class="fa fa-user-check"></i>Participando
+                                                <span data-lecture="{{$lecture->id}}"
+                                                      data-url="/desinscrever/palestra/{{$lecture->id}}"
+                                                      class="btn btn-xs btn-danger btn-participate">
+                                                <i class="fa fa-user-times"></i>Desinscrever-me
                                             </span>
-                                            <span data-lecture="{{$lecture->id}}"
-                                                  data-url="/desinscrever/palestra/{{$lecture->id}}"
-                                                  class="btn btn-xs btn-danger btn-participate">
-                                                <i class="fa fa-user-times"></i>Desinscrever
-                                            </span>
-                                            <span data-lecture="{{$lecture->id}}"
-                                                  class="btn btn-xs btn-waiting btn-participate">
-                                                <i class="fa fa-check"></i>Pendente
-                                            </span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -94,24 +94,23 @@
                                                 <i class="fa fa-map-marker"></i>{{$course->local}}</span>
                                         </div>
                                         <div class="col-lg-2 div-buttons" id="lecture-buttons-{{$course->id}}">
-                                            <span data-lecture="{{$course->id}}"
-                                                  data-url="/participar/programacao/{{$event_schedule->id}}/palestra/{{$course->id}}"
-                                                  class="btn btn-xs btn-success btn-participate">
+                                            @if($is_pending)
+                                                <span data-lecture="{{$lecture->id}}"
+                                                      class="btn btn-xs btn-waiting btn-participate">
+                                                <i class="fa fa-lock"></i>Insc.Pendente
+                                            </span>
+                                            @else
+                                                <span data-lecture="{{$course->id}}"
+                                                      data-url="/participar/programacao/{{$event_schedule->id}}/palestra/{{$course->id}}"
+                                                      class="btn btn-xs btn-success btn-participate">
                                                 <i class="fa fa-user-plus"></i>Participar
                                             </span>
-                                            <span data-lecture="{{$course->id}}"
-                                                  class="btn btn-xs btn-info btn-participate">
-                                                <i class="fa fa-user-check"></i>Participando
+                                                <span data-lecture="{{$course->id}}"
+                                                      data-url="/desinscrever/palestra/{{$course->id}}"
+                                                      class="btn btn-xs btn-danger btn-participate">
+                                                <i class="fa fa-user-times"></i>Desinscrever-me
                                             </span>
-                                            <span data-lecture="{{$course->id}}"
-                                                  data-url="/desinscrever/palestra/{{$course->id}}"
-                                                  class="btn btn-xs btn-danger btn-participate">
-                                                <i class="fa fa-user-times"></i>Desinscrever
-                                            </span>
-                                            <span data-lecture="{{$course->id}}"
-                                                  class="btn btn-xs btn-waiting btn-participate">
-                                                <i class="fa fa-check"></i>Pendente
-                                            </span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -131,32 +130,30 @@
 @endsection
 @section('script')
     <script type="text/javascript">
-        var ev_schedule_id = document.getElementById('schedule-day-container').getAttribute('event-schedule');
-        var manipulated_btn;
+        var ev_schedule = document.getElementById('schedule-day-container');
+        var ev_schedule_id = ev_schedule.getAttribute('event-schedule');
+        var user_is_pending = ev_schedule.getAttribute('is-pending');
         $(window).on('load', function () {
-            $('.btn-participate.btn-success').show();
-            $.ajax({
-                url: '/get/palestras/' + ev_schedule_id,
-                method: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    if (data.status) {
-                        $.each(data.lectures_subscribed, function (k, v) {
-                            var div = $('#lecture-buttons-' + v.id);
-                            div.children(".btn-success").hide();
-                            if ($('.event-notification').is(':visible')) {
-                                div.children(".btn-waiting").show();
-                            } else {
-                                div.children(".btn-info").show();
-                            }
-                        });
-                    }
-                },
-                error: function () {
+            if (!user_is_pending) {
+                $.ajax({
+                    url: '/get/palestras/' + ev_schedule_id,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.status) {
+                            $.each(data.lectures_subscribed, function (k, v) {
+                                var div = $('#lecture-buttons-' + v.id);
+                                div.children(".btn-success").hide();
+                                div.children(".btn-danger").show();
+                            });
+                        }
+                    },
+                    error: function () {
 
-                }
-            });
-            $('.btn-participate').click(function () {
+                    }
+                });
+            }
+            $('.btn-success, .btn-danger').click(function () {
                 $(this).attr('disabled', 'disabled');
                 var url = $(this).attr('data-url');
                 $.ajax({
@@ -175,23 +172,9 @@
                                 parent.setAttribute('class', 'panel panel-default border-conflict');
                                 $(heading).before(i);
                             });
+                        } else if (data.status == 'maxpeople') {
+                            alert(data.message);
                         }
-                        setTimeout(function () {
-                            $('#lecture-buttons-' + data.lecture_id + ' .btn-participate').hide();
-                            if (data.status == 'deleted') {
-                                $('#lecture-buttons-' + data.lecture_id + ' .btn-success').show();
-                            }
-                            if (data.status == true ) {
-                                if (data.subs == true) {
-                                    $('#lecture-buttons-' + data.lecture_id + ' .btn-info').show();
-                                } else {
-                                    $('#lecture-buttons-' + data.lecture_id + ' .btn-waiting').show();
-                                }
-                            }
-                            if(data.status == 'maxpeople'){
-                                alert(data.message);
-                            }
-                        }, 500);
                     },
                     error: function () {
 
@@ -201,20 +184,6 @@
                     }
                 });
             });
-            $('.div-buttons').mouseenter(function () {
-                var button = $(this).children('.btn-participate:visible');
-                manipulated_btn = button;
-                if (button.hasClass('btn-info') || button.hasClass('btn-waiting')) {
-                    button.hide();
-                    $(this).children('.btn-danger').show();
-                }
-            }).mouseleave(function () {
-                var button = $(this).children('.btn-participate:visible');
-                $(button).hide();
-                manipulated_btn.show();
-            });
         });
-
-
     </script>
 @endsection

@@ -9,6 +9,7 @@
                     <span class="small">
                         - {{getWeekDay($event_schedule->date)}} ({{getDayAndMonth($event_schedule->date)}})
                     </span>
+                    <a href="{{route('event.schedule',['name'=>str_slug($event_schedule->event->name), 'id'=>$event_schedule->event->id])}}" class="btn btn-default pull-right"><i class="fa fa-arrow-left"></i>Voltar</a>
                 </h1>
 
                 @if($is_pending)
@@ -16,10 +17,7 @@
                         <p>Você ainda não está inscrito no evento.</p>
                         <p>Para que você possa participar das palestras e cursos entregue 1 kg de alimento não perecível
                             (exceto sal) no DAI</p>
-                        <p class="text-success">Na entrega do kg de alimento, todas as palestras pendentes
-                            automaticamente serão confirmadas</p>
-                        <p class="text-success">Mas se as palestras já estiverem lotadas pode acontecer de você não
-                            poder participar. Então corra para não perder a sua vaga!!!</p>
+                        <p class="text-success">Corra para não perder a sua vaga!!!</p>
                         <p class="text-primary"><i class="fa fa-map-marker"></i> Prédio 32, Sala 106 em frente ao bar
                         </p>
                     </div>
@@ -60,6 +58,10 @@
                                                       class="btn btn-xs btn-danger btn-participate">
                                                 <i class="fa fa-user-times"></i>Desinscrever-me
                                             </span>
+                                                <span data-lecture="{{$lecture->id}}"
+                                                      class="btn btn-xs btn-info btn-participate">
+                                                <i class="fa fa-users"></i>Lotada
+                                            </span>
                                             @endif
                                         </div>
                                     </div>
@@ -69,6 +71,8 @@
                                  aria-labelledby="heading-{{$lecture->id}}">
                                 <div class="panel-body">
                                     {{$lecture->description}}
+                                    <hr>
+                                    <span class="pull-right">Capacidade: {{$lecture->max_people}} | Participando: {{$lecture->user_subs}}</span>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +99,7 @@
                                         </div>
                                         <div class="col-lg-2 div-buttons" id="lecture-buttons-{{$course->id}}">
                                             @if($is_pending)
-                                                <span data-lecture="{{$lecture->id}}"
+                                                <span data-lecture="{{$course->id}}"
                                                       class="btn btn-xs btn-waiting">
                                                 <i class="fa fa-lock"></i>Insc.Pendente
                                             </span>
@@ -110,6 +114,10 @@
                                                       class="btn btn-xs btn-danger btn-participate">
                                                 <i class="fa fa-user-times"></i>Desinscrever-me
                                             </span>
+                                                <span data-lecture="{{$course->id}}"
+                                                      class="btn btn-xs btn-info btn-participate">
+                                                <i class="fa fa-users"></i>Lotada
+                                            </span>
                                             @endif
                                         </div>
                                     </div>
@@ -119,6 +127,8 @@
                                  aria-labelledby="heading-{{$course->id}}">
                                 <div class="panel-body">
                                     {{$course->description}}
+                                    <hr>
+                                    <span class="pull-right">Capacidade: {{$course->max_people}} | Participando: {{$course->user_subs}}</span>
                                 </div>
                             </div>
                         </div>
@@ -146,6 +156,13 @@
                                 var div = $('#lecture-buttons-' + v.id);
                                 div.children(".btn-success").hide();
                                 div.children(".btn-danger").show();
+                            });
+                            $.each(data.crowded_lectures, function (k, v) {
+                                var div = $('#lecture-buttons-' + v.id);
+                                if (div.children(".btn-success").is(':visible')) {
+                                    div.children(".btn-success").hide();
+                                    div.children(".btn-info").show();
+                                }
                             });
                         }
                     },
@@ -184,12 +201,13 @@
                             div.children(".btn-success").hide();
                             div.children(".btn-danger").show();
                         }
+                        $('.btn-success, .btn-danger').removeAttr('disabled');
                     },
                     error: function () {
 
                     },
                     done: function () {
-                        $(this).removeAttr('disabled');
+
                     }
                 });
             });

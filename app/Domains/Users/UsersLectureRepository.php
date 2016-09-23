@@ -16,14 +16,13 @@ class UsersLectureRepository extends AbstractCrudRepository
 
     protected $modelClass = UsersLecture::class;
 
-    public function getAllLecturesThatUserIsSubscriber($event_id, $user_id, $date)
+    public function getAllLecturesThatUserIsSubscriber($user_id, $schedule_id)
     {
         return $this->newQuery()
             ->join('lectures', 'users_lecture.lecture_id', '=', 'lectures.id')
             ->join('event_schedule', 'lectures.event_schedule_id', '=', 'event_schedule.id')
             ->where('users_lecture.user_id', '=', $user_id)
-            ->where('event_schedule.event_id', '=', $event_id)
-            ->where('event_schedule.date', '=', "$date")
+            ->where('event_schedule.id', '=', $schedule_id)
             ->select('lectures.*')
             ->get();
     }

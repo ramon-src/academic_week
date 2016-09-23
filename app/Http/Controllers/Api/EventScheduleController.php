@@ -37,11 +37,13 @@ class EventScheduleController extends Controller
     public function schedule_day($name, $event_schedule_id, $date)
     {
         $EventScheduleDay = $this->eventScheduleRepository->findByID($event_schedule_id);
-
+        $array_is_subscriber = $this->eventsRepository->isUserSubscriberInEvent($EventScheduleDay->event_id, auth()->id());
+        $is_pending = count($array_is_subscriber) ? false : true;
         return view('api/default_user/events/schedule_day')
             ->with('event_schedule', $EventScheduleDay)
             ->with('lectures', $this->eventScheduleRepository->getAllLectures($event_schedule_id))
-            ->with('courses', $this->eventScheduleRepository->getAllCourses($event_schedule_id));
+            ->with('courses', $this->eventScheduleRepository->getAllCourses($event_schedule_id))
+            ->with('is_pending', $is_pending);
     }
 
     public function subscribe($event_schedule_id, $lecture_id, UsersLectureRepository $usersLectureRepository, LecturesRepository $lecturesRepository)
@@ -57,14 +59,14 @@ class EventScheduleController extends Controller
         } else {
             DB::beginTransaction();
             try {
-                $count = $usersLectureRepository->countUsersSubscribedInLecture($event_id, $lecture_id);
-                if($count < $Lecture->max_people) {
+                $count = $usersLectureRepository->countUsersSubscribedInLecture($event_id, $lecture_id)->first();
+                if ($count->user_count < $Lecture->max_people) {
                     $isSubscriber = $this->eventsRepository->isUserSubscriberInEvent($event_id, $user_id);
                     $is = (count($isSubscriber)) ? true : 'false';
                     $usersLectureRepository->create(['user_id' => $user_id, 'lecture_id' => $lecture_id]);
                     DB::commit();
                     return response()->json(['status' => true, 'message' => '', 'subs' => $is, 'lecture_id' => $lecture_id]);
-                }else{
+                } else {
                     DB::commit();
                     return response()->json(['status' => 'maxpeople', 'message' => 'Esta palestra/curso já atingiu o número máximo', 'lecture_id' => $lecture_id]);
                 }

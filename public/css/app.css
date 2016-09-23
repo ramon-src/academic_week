@@ -8096,7 +8096,7 @@ a.btn i, span.btn i {
     float: right; }
     #schedule-day-container .panel-title .local i {
       margin-right: 5px; }
-  #schedule-day-container .panel-title .btn-participate {
+  #schedule-day-container .panel-title .btn-participate, #schedule-day-container .panel-title .btn-waiting {
     float: right;
     margin: 2px -5px 0px 0px; }
 

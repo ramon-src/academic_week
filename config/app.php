@@ -178,6 +178,7 @@ return [
         AcademicDirectory\Providers\EventServiceProvider::class,
         AcademicDirectory\Providers\RouteServiceProvider::class,
         AcademicDirectory\Providers\InstituitionEventServiceProvider::class,
+        AcademicDirectory\Providers\UserApiServiceProvider::class,
 
     ],
 

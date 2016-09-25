@@ -2,6 +2,7 @@
 
 namespace AcademicDirectory\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,6 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'AcademicDirectory\Model' => 'AcademicDirectory\Policies\ModelPolicy',
+        'AcademicDirectory\Domains\Users\User' => 'AcademicDirectory\Policies\AdminPolicy',
     ];
 
     /**
@@ -25,6 +27,5 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
     }
 }

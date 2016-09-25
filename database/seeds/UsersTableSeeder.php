@@ -26,6 +26,12 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('admdai2016'),
                 'active' => true,
                 'role_id' => DB::table('roles')->where('name', 'Administrador')->value('id')
+            ], [
+                'name' => 'DAI Admin',
+                'email' => 'default@gmail.com',
+                'password' => bcrypt('def'),
+                'active' => true,
+                'role_id' => DB::table('roles')->where('name', 'Default')->value('id')
             ]
         ]);
     }

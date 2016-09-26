@@ -8066,12 +8066,18 @@ body {
 #instituition_register_div {
   display: none; }
 
-a.btn i, span.btn i {
+a.btn i, span.btn i, button.btn i {
   margin-right: 10px; }
 
 .btn-waiting {
   background-color: #D3E0E9;
   color: black; }
+
+.event-notification .img-div {
+  text-align: center; }
+  .event-notification .img-div img {
+    width: auto;
+    height: 250px; }
 
 #widget-event-title {
   font-size: 26px; }

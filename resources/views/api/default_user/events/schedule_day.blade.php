@@ -9,17 +9,18 @@
                     <span class="small">
                         - {{getWeekDay($event_schedule->date)}} ({{getDayAndMonth($event_schedule->date)}})
                     </span>
-                    <a href="{{route('event.schedule',['name'=>str_slug($event_schedule->event->name), 'id'=>$event_schedule->event->id])}}" class="btn btn-default pull-right"><i class="fa fa-arrow-left"></i>Voltar</a>
+                    <a href="{{route('event.schedule',['name'=>str_slug($event_schedule->event->name), 'id'=>$event_schedule->event->id])}}"
+                       class="btn btn-default pull-right"><i class="fa fa-arrow-left"></i>Voltar</a>
                 </h1>
 
                 @if($is_pending)
-                    <div class="event-notification page-header text-warning">
-                        <p>Você ainda não está inscrito no evento.</p>
-                        <p>Para que você possa participar das palestras e cursos entregue 1 kg de alimento não perecível
-                            (exceto sal) no DAI</p>
-                        <p class="text-success">Corra para não perder a sua vaga!!!</p>
-                        <p class="text-primary"><i class="fa fa-map-marker"></i> Prédio 32, Sala 106 em frente ao bar
-                        </p>
+                    <div class="event-notification page-header text-danger">
+                        <div class="img-div">
+                            <img src="/imgs/two_step">
+                            <p>Obs.: 1 kg de alimento não perecível (exceto sal)</p>
+                            <p class="text-primary"><i class="fa fa-map-marker"></i> Prédio 32, Sala 106 em frente ao bar
+                            </p>
+                        </div>
                     </div>
                 @endif
                 <div class="page-header">
@@ -128,7 +129,7 @@
                                 <div class="panel-body">
                                     {{$course->description}}
                                     <hr>
-                                    <span class="pull-right">Capacidade: {{$course->max_people}}/span>
+                                    <span class="pull-right">Capacidade: {{$course->max_people}}
                                 </div>
                             </div>
                         </div>

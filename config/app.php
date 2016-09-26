@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'My Application',
+    'name' => 'Diretório Academico de Informática',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt-br',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +178,7 @@ return [
         AcademicDirectory\Providers\EventServiceProvider::class,
         AcademicDirectory\Providers\RouteServiceProvider::class,
         AcademicDirectory\Providers\InstituitionEventServiceProvider::class,
+        AcademicDirectory\Providers\UserApiServiceProvider::class,
 
     ],
 

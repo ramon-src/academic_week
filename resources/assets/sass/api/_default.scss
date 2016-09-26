@@ -1,10 +1,20 @@
-a.btn, span.btn{
+a.btn, span.btn, button.btn {
   i {
     margin-right: 10px;
   }
 }
 
-.btn-waiting{
+.btn-waiting {
   background-color: $white-gray;
   color: black;
+}
+
+.event-notification {
+  .img-div {
+    text-align: center;
+    img {
+      width: auto;
+      height: 250px;
+    }
+  }
 }

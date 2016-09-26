@@ -10,8 +10,9 @@
                  alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Fique por dentro da Semana Acadêmica</h1>
-                    <p><a class="btn btn-lg btn-primary" href="{{url('/login')}}" role="button">LOGIN</a></p>
+                    <h1>Fique ligado nos eventos!</h1>
+                    <p><a class="btn btn-lg btn-primary" href="{{url('/login')}}" role="button">
+                            <i class="fa fa-user"></i>LOGIN</a></p>
                 </div>
             </div>
         </div>

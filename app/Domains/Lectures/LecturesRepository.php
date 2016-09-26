@@ -44,6 +44,7 @@ class LecturesRepository extends AbstractCrudRepository
             ->select('lectures.*', DB::raw('COUNT(users_lecture.user_id) as user_subs'))
             ->groupBy('lectures.id')
             ->groupBy('users_lecture.user_id')
+            ->groupBy('lectures.subject')
             ->havingRaw('COUNT(user_subs) = lectures.max_people')
             ->get();
     }

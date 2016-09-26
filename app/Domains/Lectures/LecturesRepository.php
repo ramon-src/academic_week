@@ -41,7 +41,7 @@ class LecturesRepository extends AbstractCrudRepository
             ->join('event_schedule', 'lectures.event_schedule_id', '=', 'event_schedule.id')
             ->join('users_lecture', 'lectures.id', '=', 'users_lecture.lecture_id')
             ->where('event_schedule.id', '=', $schedule_id)
-            ->select('lectures.*', DB::raw('COUNT(users_lecture.user_id) as user_subs'))
+            ->select('lectures.*')
             ->groupBy('lectures.id', 'lectures.lecture_category_id',
                 'lectures.event_schedule_id',
                 'lectures.subject',
@@ -49,7 +49,7 @@ class LecturesRepository extends AbstractCrudRepository
                 'lectures.updated_at',
                 'lectures.description', 'lectures.local', 'lectures.init_hour', 'lectures.end_hour', 'lectures.max_people')
             ->groupBy('users_lecture.user_id')
-            ->havingRaw('COUNT(user_subs) = lectures.max_people')
+            ->havingRaw('COUNT(users_lecture.user_id) = lectures.max_people')
             ->get();
     }
 

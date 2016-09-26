@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Ramon Schmidt Rocha">
     <link rel="icon" href="">
 
     <title>Diretório Acadêmico - PUCRS</title>

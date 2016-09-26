@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Ramon Schmidt Rocha">
     <link rel="icon"
           href="https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/1238940_1409981412549282_808186175_n.jpg?oh=bfcb3537125ff20ca5582b40e8b72cdd&oe=587C19CD">
 

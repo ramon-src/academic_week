@@ -21,7 +21,11 @@ Route::group(['namespace' => 'Api'], function () {
     Route::get('participar/programacao/{event_schedule_id}/palestra/{lecture_id}', 'EventScheduleController@subscribe')->name('event.schedule.subscribe');
     Route::get('desinscrever/palestra/{lecture_id}', 'EventScheduleController@unsubscribe');
     Route::get('get/palestras/{event_schedule_id}', 'EventScheduleController@lecturesSubscribed');
-
+    Route::get('imgs/{slug}', [
+        'as' => 'images.show',
+        'uses' => 'ImageController@show',
+        'middleware' => 'auth',
+    ]);
     // Admin Routes...
     Route::group(['namespace'=>'Users\Admin', 'middleware'=>'can:index,AcademicDirectory\Domains\Users\User'], function (){
         Route::get('usuarios', 'UsersController@index')->name('users.index');

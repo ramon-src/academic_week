@@ -30,6 +30,11 @@
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/registrar') }}">Registrar</a></li>
                 @else
+                    @can('index', 'AcademicDirectory\Domains\Users\User')
+                        <li>
+                            <a href="{{route('users.index')}}"><i class="fa fa-users"> Usuário</i></a>
+                        </li>
+                    @endcan
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>

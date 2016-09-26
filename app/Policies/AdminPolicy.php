@@ -24,7 +24,8 @@ class AdminPolicy
 
     public function before($user, $ability)
     {
-        if ($this->user->isAdmin($user->id)) {
+        $user_id = $user->id;
+        if ($this->user->isAdmin($user_id) || $this->user->isRoot($user_id)) {
             return true;
         }
     }

@@ -22,6 +22,13 @@ class UserRepository extends AbstractCrudRepository
         return $User->role_id == $Role->id;
     }
 
+    public function isRoot($id)
+    {
+        $User = $this->newQuery()->where('id', '=', $id)->first();
+        $Role = app()->make(Role::class)->newQuery()->where('name', '=', 'Root')->first();
+        return $User->role_id == $Role->id;
+    }
+
     public function getAllByRg($rg){
         return $this->newQuery()->where('rg', '=', $rg)->get();
     }

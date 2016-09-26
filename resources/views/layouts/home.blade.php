@@ -39,7 +39,8 @@
                  src="http://www.seodiesel.com/img/login/register.png"
                  alt="Generic placeholder image" width="140" height="140">
             <h2>SEMANA ACADÊMICA</h2>
-            <p>Faça já o seu login para participar da Semana Acadêmica da Faculdade de Informática!</p>
+            <p class="text-center">Organizada pela atual gestão do Diretório Acadêmico da Informática da PUCRS, com o intuito de envolver as pessoas como também compartilhar e gerar conhecimento.</p>
+            <p>Inscreva-se apenas doando 1kg de alimento!</p>
             <p><a class="btn btn-default" href="{{url('/registrar')}}" role="button">Inscrição &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->

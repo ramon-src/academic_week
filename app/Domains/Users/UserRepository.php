@@ -22,4 +22,8 @@ class UserRepository extends AbstractCrudRepository
         return $User->role_id == $Role->id;
     }
 
+    public function getAllByRg($rg){
+        return $this->newQuery()->where('rg', '=', $rg)->get();
+    }
+
 }

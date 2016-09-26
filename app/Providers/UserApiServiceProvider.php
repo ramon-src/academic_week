@@ -3,6 +3,7 @@
 namespace AcademicDirectory\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use AcademicDirectory\Domains\Services\UsersService;
 
 class UserApiServiceProvider extends ServiceProvider
 {

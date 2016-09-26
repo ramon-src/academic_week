@@ -24,7 +24,9 @@ Route::group(['namespace' => 'Api'], function () {
 
     // Admin Routes...
     Route::group(['namespace'=>'Users\Admin', 'middleware'=>'can:index,AcademicDirectory\Domains\Users\User'], function (){
-        Route::get('users', 'UsersController@index');
+        Route::get('usuarios', 'UsersController@index')->name('users.index');
+        Route::post('usuarios/pesquisaPorRg', 'UsersController@searchByRg')->name('search.user.by.rg');
+        Route::post('usuarios/ativarNoEvento', 'UsersController@activeUserInEvent')->name('active.user.in.event');
     });
 });
 

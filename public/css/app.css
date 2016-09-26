@@ -8066,7 +8066,7 @@ body {
 #instituition_register_div {
   display: none; }
 
-a.btn i, span.btn i {
+a.btn i, span.btn i, button.btn i {
   margin-right: 10px; }
 
 .btn-waiting {

@@ -8,17 +8,19 @@
 
 namespace AcademicDirectory\Domains\Services;
 use Illuminate\Support\Facades\Auth;
+
 class UsersService
 {
-    protected $user;
+    protected $userRepository;
 
     public function __construct($userRepository)
     {
-        $this->user = $userRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function isAdmin()
     {
-        return $this->user->isAdmin(Auth::id());
+        return $this->userRepository->isAdmin(Auth::id());
     }
+
 }

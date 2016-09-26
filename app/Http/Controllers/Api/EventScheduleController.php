@@ -5,7 +5,7 @@ namespace AcademicDirectory\Http\Controllers\Api;
 use AcademicDirectory\Domains\Events\EventScheduleRepository;
 use AcademicDirectory\Domains\Events\EventsRepository;
 use AcademicDirectory\Domains\Lectures\LecturesRepository;
-use AcademicDirectory\Domains\Users\UsersLecture;
+use AcademicDirectory\Domains\Users\LectureUserRolesRepository;
 use AcademicDirectory\Domains\Users\UsersLectureRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +46,7 @@ class EventScheduleController extends Controller
             ->with('is_pending', $is_pending);
     }
 
-    public function subscribe($event_schedule_id, $lecture_id, UsersLectureRepository $usersLectureRepository, LecturesRepository $lecturesRepository)
+    public function subscribe($event_schedule_id, $lecture_id, UsersLectureRepository $usersLectureRepository, LecturesRepository $lecturesRepository, LectureUserRolesRepository $lectureUserRolesRepository)
     {
         $Lecture = $lecturesRepository->findByID($lecture_id);
         $EventSchedule = $this->eventScheduleRepository->findByID($event_schedule_id);
@@ -63,7 +63,8 @@ class EventScheduleController extends Controller
                 if ($count->user_count < $Lecture->max_people) {
                     $isSubscriber = $this->eventsRepository->isUserSubscriberInEvent($event_id, $user_id);
                     $is = (count($isSubscriber)) ? true : 'false';
-                    $usersLectureRepository->create(['user_id' => $user_id, 'lecture_id' => $lecture_id]);
+                    $UserLectures = $usersLectureRepository->create(['user_id' => $user_id, 'lecture_id' => $lecture_id]);
+                    $lectureUserRolesRepository->saveByType($UserLectures->id, 'Participante');
                     DB::commit();
                     return response()->json(['status' => true, 'message' => '', 'subs' => $is, 'lecture_id' => $lecture_id]);
                 } else {
@@ -77,11 +78,14 @@ class EventScheduleController extends Controller
         }
     }
 
-    public function unsubscribe($lecture_id, UsersLectureRepository $usersLectureRepository)
+    public function unsubscribe($lecture_id, UsersLectureRepository $usersLectureRepository, LectureUserRolesRepository $lectureUserRolesRepository)
     {
         DB::beginTransaction();
         try {
-            $usersLectureRepository->unsubscribe(Auth::id(), $lecture_id);
+            $user_id = Auth::id();
+            $UserLecture = $usersLectureRepository->findByUserAndLectureId($user_id, $lecture_id)->first();
+            $lectureUserRolesRepository->deleteByType($UserLecture->id, 'Participante');
+            $usersLectureRepository->unsubscribe($user_id, $lecture_id);
             DB::commit();
             return response()->json(['status' => 'deleted', 'lecture_id' => $lecture_id]);
         } catch (Exception $e) {

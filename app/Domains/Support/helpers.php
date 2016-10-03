@@ -1,6 +1,9 @@
 <?php
 use Carbon\Carbon;
 
+use AcademicDirectory\Domains\Users\UsersLecture;
+use AcademicDirectory\Domains\Users\LectureUserRole;
+
 if (!function_exists('formatDate')) {
     function formatDate($date)
     {
@@ -39,5 +42,18 @@ if (!function_exists('setStringToTimeType')) {
     {
         $time = Carbon::createFromTime($hour, $minute);
         return $time->toTimeString();
+    }
+}
+if (!function_exists('deleteUsersLecturesByLectureId')) {
+    function deleteUsersLecturesByLectureId($id)
+    {
+        $users_lectures = UsersLecture::where('lecture_id', '=', $id)->get();
+        foreach ($users_lectures as $user_lecture) {
+            $roles = LectureUserRole::where('user_lecture_id', '=', $users_lectures->id)->get();
+            foreach ($roles as $role) {
+                $role->delete();
+            }
+            $user_lecture->delete();
+        }
     }
 }

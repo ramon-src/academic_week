@@ -25,7 +25,7 @@ class InstituitionEventServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(EventsService::class, function ($app) {
-            return new EventsService($app->make('AcademicDirectory\Domains\Events\EventsRepository'));
+            return new EventsService($app->make('AcademicDirectory\Domains\Events\EventsRepository'), $app->make('AcademicDirectory\Domains\Events\EventScheduleRepository'));
         });
     }
 }

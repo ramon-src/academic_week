@@ -43,7 +43,10 @@
             <p class="text-center">Organizada pela atual gestão do Diretório Acadêmico da Informática da PUCRS, com o
                 intuito de envolver as pessoas como também compartilhar e gerar conhecimento.</p>
             <p>Inscreva-se apenas doando 1kg de alimento!</p>
-            <p><a class="btn btn-default" href="{{url('/registrar')}}" role="button">Inscrição &raquo;</a></p>
+            <p>
+                <a class="btn btn-default" href="{{route('web.event.schedule', ['semana-academica-2016' , 1])}}" role="button"><i class="fa fa-calendar"></i> Programação</a>
+                <a class="btn btn-default" href="{{url('/registrar')}}" role="button">Inscrição &raquo;</a>
+            </p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 

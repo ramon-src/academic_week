@@ -75,7 +75,12 @@ class LecturesRepository extends AbstractCrudRepository
             ->where('lectures_category.name', '=', $type)
             ->where('event_schedule.id', '=', $schedule_id)
             ->select('lectures.*', 'lectures_category.name',DB::raw('COUNT(users_lecture.user_id) as user_subs'), DB::raw('DATE_FORMAT(lectures.init_hour,"%H:%i") as init_hour'), DB::raw('DATE_FORMAT(lectures.end_hour, "%H:%i") as end_hour'))
-            ->groupBy('lectures.id')
+            ->groupBy('lectures.id', 'lectures.lecture_category_id',
+                'lectures.event_schedule_id',
+                'lectures.subject',
+                'lectures.created_at',
+                'lectures.updated_at',
+                'lectures.description', 'lectures.local', 'lectures.init_hour', 'lectures.end_hour', 'lectures.max_people')
             ->get();
     }
 

@@ -12,9 +12,11 @@
 */
 Route::group(['namespace' => 'Web'], function () {
     Route::get('/', 'SiteController@index')->name('web.home');
+    Route::get('evento/{name}/{id}', 'ScheduleViewController@index')->name('web.event.schedule');
 });
 
 Route::group(['namespace' => 'Api'], function () {
+    Route::get('home', 'DashboardController@index');
     Route::get('dashboard', 'DashboardController@index');
     Route::get('evento/{name}/{id}/programacao', 'EventScheduleController@index')->name('event.schedule');
     Route::get('evento/{name}/np/{event_schedule_id}/dia/{date}', 'EventScheduleController@schedule_day')->name('event.schedule.day');
@@ -46,7 +48,7 @@ Route::post('registrar', 'Auth\RegisterController@register');
 // Password Reset Routes...
 Route::get('mostrar_link_form', 'Auth\ForgotPasswordController@showLinkRequestForm');
 Route::post('enviar_email_nova_senha', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('nova_senha/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 Route::post('gerar_nova_senha', 'Auth\ResetPasswordController@reset');
 
 

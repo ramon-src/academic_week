@@ -73,7 +73,7 @@
                                 <div class="panel-body">
                                     {{$lecture->description}}
                                     <hr>
-                                    <span class="pull-right">Capacidade: {{$lecture->max_people}}</span>
+                                    <span class="pull-right">Capacidade: {{$lecture->max_people}} | Participantes: {{$lecture->user_subs}}</span>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,8 @@
                                 <div class="panel-body">
                                     {{$course->description}}
                                     <hr>
-                                    <span class="pull-right">Capacidade: {{$course->max_people}}
+                                    <span class="pull-right">Capacidade: {{$course->max_people}} | Participantes: {{$course->user_subs}}
+                                    </span>
                                 </div>
                             </div>
                         </div>

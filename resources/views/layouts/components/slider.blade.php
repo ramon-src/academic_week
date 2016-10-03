@@ -6,7 +6,7 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img class="first-slide"
-                 src="http://conteudo.pucrs.br/wp-content/uploads/sites/19/2016/03/destque-mestrado-facin-destaque.jpg"
+                 src="imgs/global_tecnopuc.jpg"
                  alt="First slide">
             <div class="container">
                 <div class="carousel-caption">

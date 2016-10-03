@@ -2293,7 +2293,7 @@ output {
   padding-top: 7px;
   font-size: 14px;
   line-height: 1.6;
-  color: #555555; }
+  color: #DDDDDD; }
 
 .form-control {
   display: block;
@@ -2302,7 +2302,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.6;
-  color: #555555;
+  color: #DDDDDD;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccd0d2;
@@ -3446,7 +3446,7 @@ tbody.collapse.in {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
-  color: #555555;
+  color: #DDDDDD;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #ccd0d2;
@@ -3561,7 +3561,7 @@ tbody.collapse.in {
       .nav-tabs > li > a:hover {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-      color: #555555;
+      color: #DDDDDD;
       background-color: #f5f8fa;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
@@ -8065,6 +8065,26 @@ body {
 
 #instituition_register_div {
   display: none; }
+
+#schedule-day-container-web ul.nav-tabs .active > a {
+  background-color: white;
+  color: black; }
+
+#schedule-day-container-web #schedule-content {
+  background-color: white;
+  border: 1px solid;
+  border-color: transparent #DDDDDD #DDDDDD #DDDDDD; }
+  #schedule-day-container-web #schedule-content .panel-title {
+    position: relative; }
+    #schedule-day-container-web #schedule-content .panel-title .subject {
+      margin-left: 15px; }
+    #schedule-day-container-web #schedule-content .panel-title .local {
+      float: right; }
+      #schedule-day-container-web #schedule-content .panel-title .local i {
+        margin-right: 5px; }
+    #schedule-day-container-web #schedule-content .panel-title .btn-participate, #schedule-day-container-web #schedule-content .panel-title .btn-waiting {
+      float: right;
+      margin: 2px -5px 0px 0px; }
 
 a.btn i, span.btn i, button.btn i {
   margin-right: 10px; }

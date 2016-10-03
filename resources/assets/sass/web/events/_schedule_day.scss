@@ -1,0 +1,31 @@
+
+#schedule-day-container-web {
+  ul.nav-tabs{
+    .active > a{
+      background-color: white;
+      color: black;
+    }
+  }
+  #schedule-content {
+    background-color: white;
+    border: 1px solid;
+    border-color: transparent $gray $gray $gray;
+    .panel-title {
+      position: relative;
+      .subject {
+        margin-left: 15px;
+      }
+      .local {
+        float: right;
+        i {
+          margin-right: 5px;
+        }
+      }
+      .btn-participate, .btn-waiting {
+        float: right;
+        margin: 2px -5px 0px 0px;
+      }
+
+    }
+  }
+}

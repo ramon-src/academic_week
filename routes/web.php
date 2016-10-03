@@ -12,6 +12,7 @@
 */
 Route::group(['namespace' => 'Web'], function () {
     Route::get('/', 'SiteController@index')->name('web.home');
+    Route::get('evento/{name}/{id}', 'ScheduleViewController@index')->name('web.event.schedule');
 });
 
 Route::group(['namespace' => 'Api'], function () {

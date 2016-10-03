@@ -15,12 +15,14 @@ class EventScheduleController extends Controller
 {
     private $eventsRepository;
     private $eventScheduleRepository;
+    private $lecturesRepository;
 
-    public function __construct(EventsRepository $eventsRepository, EventScheduleRepository $eventScheduleRepository)
+    public function __construct(EventsRepository $eventsRepository, EventScheduleRepository $eventScheduleRepository, LecturesRepository $lecturesRepository)
     {
         $this->middleware('auth');
         $this->eventsRepository = $eventsRepository;
         $this->eventScheduleRepository = $eventScheduleRepository;
+        $this->lecturesRepository = $lecturesRepository;
     }
 
     /**
@@ -39,10 +41,12 @@ class EventScheduleController extends Controller
         $EventScheduleDay = $this->eventScheduleRepository->findByID($event_schedule_id);
         $array_is_subscriber = $this->eventsRepository->isUserSubscriberInEvent($EventScheduleDay->event_id, auth()->id());
         $is_pending = count($array_is_subscriber) ? false : true;
+        $Lectures= $this->lecturesRepository->getAllLecturesByScheduleIdAndType($event_schedule_id, 'Palestras');
+        $Courses = $this->lecturesRepository->getAllLecturesByScheduleIdAndType($event_schedule_id, 'Cursos');
         return view('api/default_user/events/schedule_day')
             ->with('event_schedule', $EventScheduleDay)
-            ->with('lectures', $this->eventScheduleRepository->getAllLectures($event_schedule_id))
-            ->with('courses', $this->eventScheduleRepository->getAllCourses($event_schedule_id))
+            ->with('lectures', $Lectures)
+            ->with('courses', $Courses)
             ->with('is_pending', $is_pending);
     }
 

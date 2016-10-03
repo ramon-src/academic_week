@@ -10,6 +10,7 @@ namespace AcademicDirectory\Domains\Lectures;
 
 use Artesaos\Warehouse\AbstractCrudRepository;
 use Illuminate\Support\Facades\DB;
+
 class LecturesRepository extends AbstractCrudRepository
 {
 
@@ -36,7 +37,8 @@ class LecturesRepository extends AbstractCrudRepository
      * @param $date
      * @return mixed
      */
-    public function getAllCrowdedLecturesFromEventAndDate($schedule_id){
+    public function getAllCrowdedLecturesFromEventAndDate($schedule_id)
+    {
         return $this->newQuery()
             ->join('event_schedule', 'lectures.event_schedule_id', '=', 'event_schedule.id')
             ->join('users_lecture', 'lectures.id', '=', 'users_lecture.lecture_id')
@@ -74,8 +76,9 @@ class LecturesRepository extends AbstractCrudRepository
             ->join('lectures_category', 'lectures_category.id', '=', 'lectures.lecture_category_id')
             ->where('lectures_category.name', '=', $type)
             ->where('event_schedule.id', '=', $schedule_id)
-            ->select('lectures.*', 'lectures_category.name',DB::raw('COUNT(users_lecture.user_id) as user_subs'), DB::raw('DATE_FORMAT(lectures.init_hour,"%H:%i") as init_hour'), DB::raw('DATE_FORMAT(lectures.end_hour, "%H:%i") as end_hour'))
+            ->select('lectures.*', 'lectures_category.name', DB::raw('COUNT(users_lecture.user_id) as user_subs'), DB::raw('DATE_FORMAT(lectures.init_hour,"%H:%i") as init_hour'), DB::raw('DATE_FORMAT(lectures.end_hour, "%H:%i") as end_hour'))
             ->groupBy('lectures.id', 'lectures.lecture_category_id',
+                'lectures_category.name',
                 'lectures.event_schedule_id',
                 'lectures.subject',
                 'lectures.created_at',
@@ -83,7 +86,6 @@ class LecturesRepository extends AbstractCrudRepository
                 'lectures.description', 'lectures.local', 'lectures.init_hour', 'lectures.end_hour', 'lectures.max_people')
             ->get();
     }
-
 
 
 }

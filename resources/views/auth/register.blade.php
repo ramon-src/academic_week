@@ -50,7 +50,7 @@
                             <div class="form-group">
                                 <label for="rg" class="col-md-4 control-label">RG</label>
                                 <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12">
-                                    <input id="rg" type="text" name="rg" maxlength="10" minlength="10"
+                                    <input id="rg" type="text" name="rg"
                                            class="form-control" value="{{ old('rg') }}"
                                            required="required"/>
                                     @if ($errors->has('rg'))

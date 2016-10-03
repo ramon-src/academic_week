@@ -109,7 +109,7 @@ Ordenação, Funções, Arquivos, etc..',
                 'end_hour' => setHourAndMinute(22, 30),
                 'max_people' => 30,
                 'event_schedule_id' => 1, 'lecture_category_id' => 2,
-                'local'=> 'Prédio 32, Laboratório 309'
+                'local' => 'Prédio 32, Laboratório 309'
             ]
         ]);
 // Inception Enxuta
@@ -132,8 +132,8 @@ Ordenação, Funções, Arquivos, etc..',
 
         Lecture::find(16)->update([
             'subject' => 'A cadeia produtiva nacional do Software Livre',
-            'init_hour' => setHourAndMinute(11, 00),
-            'end_hour' => setHourAndMinute(22, 30),
+            'init_hour' => setHourAndMinute(11, 30),
+            'end_hour' => setHourAndMinute(12, 30),
             'description' => 'Desenvolvimento de código é uma arte que requer conhecimento, mas que pode alcançar padrões impensáveis com colaboração e compartilhamento. E é essa capacidade técnica que pode tornar o desenvolvedor brasileiro, a indústria de software nacional e o Brasil, uma referência mundial, ao custo de algumas boas políticas, um pouco de coragem e doses decisivas de inovação e ousadia.
 '
         ]);
@@ -182,13 +182,31 @@ Ordenação, Funções, Arquivos, etc..',
                 'end_hour' => setHourAndMinute(22, 30),
                 'max_people' => 30,
                 'event_schedule_id' => 2, 'lecture_category_id' => 1,
-                'local'=> 'Prédio 32 FACIN - Auditório térreo, Sala 102'
+                'local' => 'Prédio 32 FACIN - Auditório térreo, Sala 102'
             ]
         ]);
 
+        Lecture::find(17)->delete();
+        Lecture::find(23)->delete();
+
+        /*
+         * UPDATE TERCEIRO DIA
+         */
+
+        //curso descomplicando sharelatex
+        Lecture::find(33)->update([
+            'local' => 'Prédio 32, Laboratório 410',
+            'description' => 'Ministrante - Anderson Domingues mostrará como funciona e as principais funções para usar o ShareLatex : https://www.sharelatex.com/',
+        ]);
+
+        //imagine - CUP
         Lecture::find(24)->update([
             'subject' => 'Imagine CUP',
-            'description' => 'Experiência de alunos do Centro de Inovação da Microsoft, que participaram do Imagine Cup.'
+            'local' => 'Prédio 32 FACIN - Auditório térreo, Sala 102',
+            'init_hour' => setHourAndMinute(10, 30),
+            'end_hour' => setHourAndMinute(11, 30),
+            'event_schedule_id' => 3,
+            'description' => 'Dê vida a suas ideias com ousadia. O Microsoft Imagine conecta alunos a ferramentas, recursos e experiências que são necessários para aprimorar suas habilidades no mundo profissional atual. Seja na criação de um jogo, no design de um aplicativo ou no lançamento de um projeto, o Microsoft Imagine ajuda os alunos a desenvolver e dar vida a suas ideias com ousadia.',
         ]);
 
     }

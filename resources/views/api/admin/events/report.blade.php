@@ -27,11 +27,11 @@
                 <br>
                 @foreach($eventService->getAllUsersParticipatsInLecture($lecture->id) as $id => $user)
                     <div style="width: 5%; float: left;"><span style="font-size: 10px;">{{++$id}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{title_case($user->name)}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->rg}}</span></div>
+                    <div style="width: 30%; float: left;"><span style="font-size: 10px;">{{title_case($user->name)}}</span></div>
+                    <div style="width: 15%; float: left;"><span style="font-size: 10px;">{{$user->rg}}</span></div>
                     <div style="width: 20%; float: left;"><span
                                 style="font-size: 10px;">{{$user->instituition_register}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->email}}</span></div>
+                    <div style="width: 30%; float: left;"><span style="font-size: 10px;">{{$user->email}}</span></div>
                     <br>
                 @endforeach
                 <hr>
@@ -52,11 +52,11 @@
                 <br>
                 @foreach($eventService->getAllUsersParticipatsInLecture($course->id) as $id => $user)
                     <div style="width: 5%; float: left;"><span style="font-size: 10px;">{{++$id}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{title_case($user->name)}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->rg}}</span></div>
+                    <div style="width: 30%; float: left;"><span style="font-size: 10px;">{{title_case($user->name)}}</span></div>
+                    <div style="width: 15%; float: left;"><span style="font-size: 10px;">{{$user->rg}}</span></div>
                     <div style="width: 20%; float: left;"><span
                                 style="font-size: 10px;">{{$user->instituition_register}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->email}}</span></div>
+                    <div style="width: 30%; float: left;"><span style="font-size: 10px;">{{$user->email}}</span></div>
                     <br>
                 @endforeach
                 <hr>

@@ -2,7 +2,7 @@
 
 @section('content')
     @inject('eventService', 'AcademicDirectory\Domains\Services\EventsService')
-    <div id="schedule-day-container-web">
+    <div id="schedule-day-container-web" style="width: 100%;">
         <div class="page-header">
             <h4>Lista: {{$event->name}} <a href="{{url('/')}}" class="btn btn-default btn-xs pull-right"><i
                             class="fa fa-reply"></i> Voltar</a></h4>
@@ -26,12 +26,12 @@
                             Part: {{$lecture->user_subs}}</span></div>
                 <br>
                 @foreach($eventService->getAllUsersParticipatsInLecture($lecture->id) as $id => $user)
-                    <div style="width: 1%; float: left;"><span>{{++$id}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->name}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->rg}}</span></div>
+                    <div style="width: 5%; float: left;"><span style="font-size: 10px;">{{++$id}}</span></div>
+                    <div style="width: 30%; float: left;"><span style="font-size: 10px;">{{title_case($user->name)}}</span></div>
+                    <div style="width: 15%; float: left;"><span style="font-size: 10px;">{{$user->rg}}</span></div>
                     <div style="width: 20%; float: left;"><span
                                 style="font-size: 10px;">{{$user->instituition_register}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->email}}</span></div>
+                    <div style="width: 30%; float: left;"><span style="font-size: 10px;">{{$user->email}}</span></div>
                     <br>
                 @endforeach
                 <hr>
@@ -51,12 +51,12 @@
                             Part: {{$course->user_subs}}</span></div>
                 <br>
                 @foreach($eventService->getAllUsersParticipatsInLecture($course->id) as $id => $user)
-                    <div style="width: 1%; float: left;"><span>{{++$id}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->name}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->rg}}</span></div>
+                    <div style="width: 5%; float: left;"><span style="font-size: 10px;">{{++$id}}</span></div>
+                    <div style="width: 30%; float: left;"><span style="font-size: 10px;">{{title_case($user->name)}}</span></div>
+                    <div style="width: 15%; float: left;"><span style="font-size: 10px;">{{$user->rg}}</span></div>
                     <div style="width: 20%; float: left;"><span
                                 style="font-size: 10px;">{{$user->instituition_register}}</span></div>
-                    <div style="width: 20%; float: left;"><span style="font-size: 10px;">{{$user->email}}</span></div>
+                    <div style="width: 30%; float: left;"><span style="font-size: 10px;">{{$user->email}}</span></div>
                     <br>
                 @endforeach
                 <hr>

@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
-    public function __construct()
-    {
-    }
 
     public function index()
     {

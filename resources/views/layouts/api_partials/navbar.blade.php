@@ -32,7 +32,7 @@
                 @else
                     @can('index', 'AcademicDirectory\Domains\Users\User')
                         <li>
-                            <a href="{{route('users.index')}}"><i class="fa fa-users"> Usuário</i></a>
+                            <a href="{{route('users.index')}}"><i class="fa fa-users"></i> Usuário</a>
                         </li>
                     @endcan
                     <li class="dropdown">

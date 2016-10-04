@@ -15,7 +15,13 @@
                         </span>
                             </div>
                             <a href="{{route('event.schedule', ['name'=>str_slug($event->name), 'id' => $event->id])}}"
-                               class="btn btn-xs btn-primary btn-schedule"><i class="fa fa-calendar"></i>Programação</a>
+                               class="btn btn-xs btn-primary"><i class="fa fa-calendar"></i>Programação</a>
+
+                            @can('index', 'AcademicDirectory\Domains\Users\User')
+                            <a class="btn btn-info btn-xs" href="{{route('gen.report.participants', $event->id)}}">
+                                <i class="fa fa-file-text-o"></i>Gerar relatório
+                            </a>
+                            @endcan
                         </div>
                     </div>
                 @empty

@@ -43,4 +43,17 @@ class EventScheduleRepository extends AbstractCrudRepository
             ->get();
     }
 
+
+    public function getAllUsersParticipatsInLecture($id)
+    {
+        return $this->newQuery()
+            ->join('lectures', 'event_schedule.id', '=', 'lectures.event_schedule_id')
+            ->join('users_lecture', 'lectures.id', '=', 'users_lecture.lecture_id')
+            ->join('users', 'users_lecture.user_id', '=', 'users.id')
+            ->join('lectures_category', 'lectures_category.id', '=', 'lectures.lecture_category_id')
+            ->where('lectures.id', '=', $id)
+            ->select('users.name', 'users.rg', 'users.email', 'users.instituition_register')
+            ->get();
+    }
+
 }

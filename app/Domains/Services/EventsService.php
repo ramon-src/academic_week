@@ -15,11 +15,13 @@ class EventsService
 {
     protected $eventsRepository;
     protected $eventScheduleRepository;
+    protected $lecturesRepository;
 
-    public function __construct($eventsRepository, $eventScheduleRepository)
+    public function __construct($eventsRepository, $eventScheduleRepository, $lecturesRepository)
     {
         $this->eventsRepository = $eventsRepository;
         $this->eventScheduleRepository = $eventScheduleRepository;
+        $this->lecturesRepository = $lecturesRepository;
     }
 
     public function getEventList($id)
@@ -38,11 +40,16 @@ class EventsService
 
     public function getAllLecturesFromScheduleId($schedule_id)
     {
-        return $this->eventScheduleRepository->getAllLectures($schedule_id);
+        return $this->lecturesRepository->getAllLecturesByScheduleIdAndType($schedule_id, 'Palestras');
     }
 
     public function getAllCoursesFromScheduleId($schedule_id)
     {
-        return $this->eventScheduleRepository->getAllCourses($schedule_id);
+        return $this->lecturesRepository->getAllLecturesByScheduleIdAndType($schedule_id, 'Cursos');
+    }
+
+    public function getAllUsersParticipatsInLecture($lecture_id)
+    {
+        return $this->eventScheduleRepository->getAllUsersParticipatsInLecture($lecture_id);
     }
 }

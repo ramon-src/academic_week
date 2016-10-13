@@ -1,4 +1,5 @@
 @inject('events', 'AcademicDirectory\Domains\Services\EventsService')
+@inject('users', 'AcademicDirectory\Domains\Users\User')
 <div class="panel-heading">
     <span id="widget-event-title">Eventos</span>
 </div>
@@ -12,15 +13,19 @@
                             <div class="event-title-div">
                         <span class="event-title">
                             {{$event->name}}
+                            <br>
+                            Usuários no sistema: {{$users->count()}}
+                            <br>
+                            Pessoas confirmadas: {{$event->subscribers->count()}}
                         </span>
                             </div>
                             <a href="{{route('event.schedule', ['name'=>str_slug($event->name), 'id' => $event->id])}}"
                                class="btn btn-xs btn-primary"><i class="fa fa-calendar"></i>Programação</a>
 
                             @can('index', 'AcademicDirectory\Domains\Users\User')
-                            <a class="btn btn-info btn-xs" href="{{route('gen.report.participants', $event->id)}}">
-                                <i class="fa fa-file-text-o"></i>Gerar relatório
-                            </a>
+                                <a class="btn btn-info btn-xs" href="{{route('gen.report.participants', $event->id)}}">
+                                    <i class="fa fa-file-text-o"></i>Gerar relatório
+                                </a>
                             @endcan
                         </div>
                     </div>

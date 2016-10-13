@@ -32,6 +32,10 @@ class EventsService
             return $this->eventsRepository->getAllActiveEvents();
         }
     }
+    
+    public function countMaximumCapacityOfEvent($id){
+        return $this->eventScheduleRepository->countMaximumCapacityOfEvent($id);
+    }
 
     public function isUserSubscriberInEvent($id, $user_id)
     {

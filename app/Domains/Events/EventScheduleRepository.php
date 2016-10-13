@@ -56,4 +56,11 @@ class EventScheduleRepository extends AbstractCrudRepository
             ->get();
     }
 
+    public function countMaximumCapacityOfEvent($id){
+        return $this->newQuery()
+            ->join('lectures', 'event_schedule.id', '=', 'lectures.event_schedule_id')
+            ->where('event_schedule.event_id', '=', $id)
+            ->select(DB::raw('SUM(lectures.max_people) as maximum_capacity'))
+            ->get();
+    }
 }

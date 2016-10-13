@@ -35,4 +35,9 @@ class Event extends Model
     {
         return $this->hasMany('AcademicDirectory\Domains\Events\EventSchedule');
     }
+
+    public function subscribers()
+    {
+        return $this->hasMany('AcademicDirectory\Domains\Events\EventSubscribers');
+    }
 }
